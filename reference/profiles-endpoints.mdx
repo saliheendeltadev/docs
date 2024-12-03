@@ -1,0 +1,146 @@
+---
+title: "Profiles Endpoints"
+icon: lightbulb
+description: "A comprehensive solution for searching and retrieving individual or multiple profiles."
+---
+
+This article explains the available endpoints for the Profiles API. The Profiles API enables you to search for and retrieve profiles. Below are the available endpoints:
+
+* [Search Profiles](/reference/search-profiles)
+* [Get A Profile](/reference/get-a-profile)
+* [Get Multiple Profiles](/reference/get-multiple-profiles)
+
+## 1\. Search Profiles
+
+The `Search Profiles` endpoint allows you to search for profiles in a specified collection. You can use the endpoint to search for profiles by product ID, collection name, search string, and more.
+
+### Request Parameters
+
+The `Search Profiles` endpoint supports the following parameters:
+
+| Parameters                                              | Required/Optional | Data Type       | Description                                             |
+| ------------------------------------------------------- | ----------------- | --------------- | ------------------------------------------------------- |
+| [product\_Id](https://buildify.readme.io/reference/product-ids)                   | Required          | string          | The unique product ID.                                  |
+| [collection](/reference/collections)                    | Required          | string          | The collection name of the profile to search from.      |
+| [search](/reference/searching-params)                   | Optional          | string          | The search string.                                      |
+| [page](/reference/pagination)                           | Optional          | integer         | Fetch results from the given page number.               |
+| [perpage](/reference/pagination)                        | Optional          | integer         | Number of results per page.                             |
+| [facets](/reference/faceting)                           | Optional          | array of string | Fetch the facet information, should be comma-separated. |
+| [filterQuery](/reference/filtering)                     | Optional          | string          | Query to filter listings.                               |
+| [retrieveAttributes](/reference/retrievable-attributes) | Optional          | array of string | Attributes to retrieve.                                 |
+| [referrences](/reference/referrencing)                  | Optional          | array of string | Field references to fill, should be comma separated.    |
+
+### Response Payload
+
+The response payload of the `Search Profiles` endpoint will contain the search results based on the provided parameters. Below is an example of a response object:
+
+```JSON JSON
+
+{
+  "results": [
+    {
+      "address": "45 Saint Clair Avenue West, 1001, Toronto, Ontario, M4V 1K9, Canada",
+      "listings": [],
+      "logo": "https://storage.googleapis.com/precon-app.appspot.com/d2d7751a-f463-44b3-8cc4-02ed7fcef6e2.png",
+      "name": "Knightstone Capital Management Inc.",
+      "website": "http://www.k-cap.com/",
+      "path": "Builders/zlVMmcdJv3yv3e3VZam3",
+      "objectID": "zlVMmcdJv3yv3e3VZam3"
+    },
+    {
+      "address": "3389 Steeles Avenue East, 100, Toronto, Ontario, M2H 0A1, Canada\n\n",
+      "listings": [],
+      "logo": "https://storage.googleapis.com/precon-app.appspot.com/f0a21e8c-ba53-4128-8dab-9e616353335c.png",
+      "name": "Kingdom Development",
+      "website": "https://kingdomcanada.com/",
+      "path": "Builders/zR9k4ao6zQgMJdxqs3Vf",
+      "objectID": "zR9k4ao6zQgMJdxqs3Vf"
+    }
+  ],
+  "total": 419,
+  "page": 0,
+  "pages": 210,
+  "perPage": 2
+}
+```
+
+## 2\. Get A Profile
+
+The `Get A Profile` endpoint allows you to retrieve a specific profile by ID. You can use this endpoint to retrieve a single profile from a specified collection.
+
+### Request Parameters
+
+The `Get A Profile` endpoint supports the following parameters:
+
+| Parameter                              | Required/Optional | Data Type       | Description                                                             |
+| -------------------------------------- | ----------------- | --------------- | ----------------------------------------------------------------------- |
+| [product\_id](https://buildify.readme.io/reference/product-ids)  | Required          | string          | The unique product ID.                                                  |
+| id                                     | Required          | string          | Profile ID to fetch.                                                    |
+| [collection](/reference/collections)   | Required          | string          | Name of the profile collection, for example, Architects, Builders, etc. |
+| [referrences](/reference/referrencing) | Optional          | array of string | Field referrences to fill, should be comma separated                    |
+
+### Response Payload
+
+The response payload of the `Get A Profile` endpoint will contain the requested profile information, as shown in the example below.
+
+```JSON JSON
+
+{
+  "address": "45 Saint Clair Avenue West, 1001, Toronto, Ontario, M4V 1K9, Canada",
+  "listings": [],
+  "logo": "https://storage.googleapis.com/precon-app.appspot.com/d2d7751a-f463-44b3-8cc4-02ed7fcef6e2.png",
+  "name": "Knightstone Capital Management Inc.",
+  "website": "http://www.k-cap.com/",
+  "path": "Builders/zlVMmcdJv3yv3e3VZam3",
+  "id": "zlVMmcdJv3yv3e3VZam3"
+}
+```
+
+## 3\. Get Multiple Profiles
+
+The `Get Multiple Profiles` endpoint allows you to retrieve multiple profiles at once. You can use this endpoint to retrieve multiple profiles from a specified collection by providing a list of profile paths.
+
+### Request Parameters
+
+The `Get Multiple Profiles` endpoint supports the following parameters:
+
+| Parameter                              | Required/Optional | Data Type       | Description                                                     |
+| -------------------------------------- | ----------------- | --------------- | --------------------------------------------------------------- |
+| [product\_id](https://buildify.readme.io/reference/product-ids)  | Required          | string          | The unique product ID.                                          |
+| paths                                  | Required          | array of string | Paths of profiles. Paths are made up of collection name and id. |
+| [referrences](/reference/referrencing) | Optional          | array of string | Fields to attach references, should be comma separated.         |
+
+### Response Payload
+
+The response payload of the `Get Multiple Profiles` endpoint will contain the requested profile information for multiple profiles. Below is a response example for multiple profiles.
+
+```JSON JSON
+
+{
+  "results": [
+    {
+      "address": "317 Adelaide St W, Toronto, Ontario, M5V 1P9, Canada",
+      "listings": [
+        "Listings/Q2TAED"
+      ],
+      "logo": "https://storage.googleapis.com/precon-app.appspot.com/3d16b6f7-c5ce-428e-87bd-651cc09d6ecd.png",
+      "name": "Niche Development",
+      "website": "nichedevelopment.ca",
+      "path": "Builders/06K1RDAiqm543AVo72BE",
+      "sample": "[[email protected]](/cdn-cgi/l/email-protection)",
+      "objectID": "06K1RDAiqm543AVo72BE"
+    },
+    {
+      "address": "602 King St W Suite 102, Toronto, ON M5V 1M6",
+      "listings": [
+        "Listings/IP1NDL"
+      ],
+      "logo": "https://storage.googleapis.com/precon-app.appspot.com/4077aa42-671c-4b3e-90c6-eb2cf2cebb4f.png",
+      "name": "MarketVision Real Estate Corporation",
+      "website": "marketvisionrealty.com",
+      "path": "Marketers/1NuWRj06ZHFddQVzZfVt",
+      "objectID": "1NuWRj06ZHFddQVzZfVt"
+    }
+  ]
+}
+```

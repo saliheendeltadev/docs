@@ -1,0 +1,273 @@
+---
+title: "Geosearch"
+icon: globe
+description: To filter listings around a given latitude and longitude, supply a comma-separated latitude and longitude.
+---
+
+## nearby
+
+**_String, Optional_**
+
+ For example, listings around Toronto with latitude 43.68 and longitude -79.45, `nearby="43.68, -79.45". `
+
+## radius
+
+**_Integer, Optional_**
+
+Provide a radius in meters to search listings within a given radius only.
+When a radius is not provided, the radius is automatically computed based on the density of the searched area, depending on other search parameters.
+
+#### Sample geo-searched query
+<Tabs>
+  <Tab title="Request">
+```JSON
+
+{
+     "search": "Residences",
+     "perPage": 1,
+     "nearby": "43.68, -79.45",
+     "radius": 10000
+}
+```
+  </Tab>
+  <Tab title="Response">
+```JSON
+
+{
+  "results": [
+    {
+      "updatedAt": "2022-06-12T15:15:12.436Z",
+      "interiorDesigners": [
+        "InteriorDesigners/BSczum1cxvBPqLNiA07f"
+      ],
+      "lat": "43.67377297884373",
+      "numberOfUnits": "269",
+      "paymentStructures": [
+        {
+          "type": "fixed",
+          "fixedDeposit": 5000,
+          "paymentDue": "with offer",
+          "paymentOn": ""
+        },
+        {
+          "type": "percentage",
+          "paymentOn": "",
+          "paymentDue": "in 30 days",
+          "percentageDeposit": 5
+        },
+        {
+          "type": "percentage",
+          "paymentOn": "Occupancy",
+          "percentageDeposit": 10,
+          "paymentDue": "on occupancy"
+        }
+      ],
+      "communities": [],
+      "estimatedCompletionDateTBD": false,
+      "amenities": [
+        "Party Room",
+        "Multi-Purpose Room",
+        "Catering Kitchen",
+        "Fitness Centre",
+        "Landscaped Courtyard",
+        "Games Room",
+        "Concierge",
+        "Mail Room",
+        "Rooftop Terrace with Outdoor BBQ Area",
+        "Coworking Space",
+        "Pet wash station",
+        "Lobby",
+        "Rooftop Lounge",
+        "Sun Deck",
+        "Lounge",
+        "dining and lounge area",
+        "Rooftop Alfresco Dining & Barbeques"
+      ],
+      "postalCode": "M6N 1J6",
+      "numberOfIncentives": 1,
+      "municipalities": [
+        "W03"
+      ],
+      "constructionStartedTBD": false,
+      "salesStartedTBD": false,
+      "cityOrDistrict": "Toronto",
+      "constructionStatus": "Construction",
+      "country": "Canada",
+      "builders": [
+        "Builders/EK0PFUuuC5VxkX4Hr6h6"
+      ],
+      "floorPlans": [],
+      "_geoloc": {
+        "lat": 43.67377297884373,
+        "lng": -79.4621191924369
+      },
+      "completionDateTBD": false,
+      "firstOccupancyDate": "",
+      "metering": "",
+      "createdAt": "2022-06-12T14:10:52.233Z",
+      "coverPhoto": {
+        "url": "https://storage.googleapis.com/precon-app.appspot.com/de389fac-f375-4dbf-81ed-46b4d98fe0f4.png",
+        "name": "cover"
+      },
+      "photos": [
+        {
+          "tags": [
+            "Exterior"
+          ],
+          "confirm": true,
+          "createdAt": "2022-06-12T15:15:03.141Z",
+          "type": "image/jpeg",
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/47a5c475-4690-4ff2-ac0d-35fb797cfc40",
+          "name": "Photo"
+        },
+        {
+          "tags": [
+            "Interior"
+          ],
+          "createdAt": "2022-06-12T15:15:03.141Z",
+          "name": "Photo",
+          "type": "image/jpeg",
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/bbe01ee1-b6c9-4ddb-a5d5-b2748a1f69f9",
+          "confirm": true
+        },
+        {
+          "name": "Photo",
+          "type": "image/jpeg",
+          "confirm": true,
+          "createdAt": "2022-06-12T15:15:03.141Z",
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/dde83535-46d1-4863-9140-70caf61904b4",
+          "tags": [
+            "Interior"
+          ]
+        },
+        {
+          "confirm": true,
+          "tags": [
+            "Interior"
+          ],
+          "type": "image/jpeg",
+          "createdAt": "2022-06-12T15:15:03.141Z",
+          "name": "Photo",
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/a95714b3-0469-4382-9377-fd0218c49368"
+        },
+        {
+          "type": "image/jpeg",
+          "createdAt": "2022-06-12T15:15:03.141Z",
+          "tags": [
+            "Interior"
+          ],
+          "confirm": true,
+          "name": "Photo",
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/dc693037-21ba-48f1-8a8a-3be7dbe57be0"
+        },
+        {
+          "createdAt": "2022-06-12T15:15:03.141Z",
+          "tags": [
+            "Interior"
+          ],
+          "confirm": true,
+          "type": "image/jpeg",
+          "name": "Photo",
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/3ceda8a3-70c7-4614-88d5-94f53326e538"
+        },
+        {
+          "createdAt": "2022-06-12T15:15:03.141Z",
+          "type": "image/jpeg",
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/19496923-efc6-47a1-bf7d-e96567146e46",
+          "tags": [
+            "Exterior"
+          ],
+          "confirm": true,
+          "name": "Photo"
+        },
+        {
+          "createdAt": "2022-06-12T15:15:03.141Z",
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/42695cb5-01e1-4b13-8f96-8b459e0af411",
+          "tags": [
+            "Interior"
+          ],
+          "type": "image/jpeg",
+          "confirm": true,
+          "name": "Photo"
+        }
+      ],
+      "virtualShowing": "https://scoutcondos.com/content/videos/",
+      "firstOccupancyDateTBD": false,
+      "ccOrMaintFee": 0.59,
+      "streetName": "Saint Clair Avenue West",
+      "parkingMaintainanceIncluded": false,
+      "logo": {
+        "name": "logo",
+        "url": "https://storage.googleapis.com/precon-app.appspot.com/48efacbc-d3a9-456e-86b7-d28f8bf4bce6.png"
+      },
+      "estimatedCompletionDate": "Fall/Winter 2022",
+      "paymentTitle1": "Deposit Structure",
+      "streetNumber": 1791,
+      "ceilingHeights": "Up to 9'0\"",
+      "name": "Scout Condos",
+      "architects": [
+        "Architects/JtCTXnc4zoxE59BPqKnx"
+      ],
+      "parkingCostIncluded": true,
+      "publishStatus": "draft",
+      "numberOfPayments": 3,
+      "numberOfFloorPlans": 0,
+      "assignmentFeeFree": false,
+      "parkingRestriction": "Two Bedroom and Two Bedrooms Plus Den includes parking",
+      "constructionStarted": "Dec 2019",
+      "parkingMaintainance": 0,
+      "storageCostIncluded": true,
+      "marketingCompanies": [
+        "Marketers/fsHEps24lbs9kO1UxZ7w"
+      ],
+      "completionDate": "",
+      "developmentLeviesIncluded": false,
+      "assignmentFee": 0,
+      "meteringIncluded": false,
+      "lockerMaintainanceIncluded": false,
+      "hasSecondPaymentStructure": false,
+      "lockerMaintainance": 0,
+      "summary": "Building on the success of Scoop, Graywood will further enhance the St. Clair West neighbourhood with Scout, a new residence designed to fit seamlessly into this exciting neighbourhood on the rise.\n\nCommunity-centric residences, Scout’s unobtrusive yet engaging design complements the vibrant neighbourhood in which it sits. The building’s distinctive terraced design creates visual interest and articulates an air of friendliness that’s in keeping with the area’s social milieu. From its recessed balconies to courtyard, its vertical and horizontal community landscape, Scout’s design stems from our desire to connect with our surroundings.",
+      "salesStarted": "Fall/Winter 2018",
+      "salesCompanies": [
+        "SalesCompanies/p98mrjfzicczJApb0cuY"
+      ],
+      "ccOrMaintFeeIncluded": false,
+      "brokerages": [],
+      "storageRestriction": "Two Bedroom and Two Bedrooms Plus Den includes locker",
+      "videos": [],
+      "developmentLevies": "",
+      "sellingStatus": "Selling now",
+      "neighbourhood": [
+        "Carleton Village"
+      ],
+      "owners": [],
+      "depositAmount1": "",
+      "long": "-79.4621191924369",
+      "agents": [],
+      "type": [
+        "Condo",
+        "Townhouse"
+      ],
+      "incentives": [
+        {
+          "date": "2022-06-12T22:27:05.682+0800",
+          "description": "Limited Time Incentives:\n\n*Extended Deposit Structure\n\n*Locker included in the purchase price\n\n**Parking and Locker included in purchase price\n\n***Only applicable to the FIRST 5 deals!\n\n*Incentive current as of May 9, 2022"
+        }
+      ],
+      "numberOfFloors": "12",
+      "state": "Ontario",
+      "path": "Listings/1A90IV",
+      "lastmodified": 1660853680456,
+      "objectID": "1A90IV"
+    }
+  ],
+  "total": 41,
+  "page": 0,
+  "pages": 41,
+  "perPage": 1
+}
+```
+  </Tab>
+
+</Tabs>

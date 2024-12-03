@@ -1,91 +1,127 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Builidfy",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
-  "favicon": "/favicon.svg",
+  "theme": "venus",
+  "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#036c52",
+    "light": "#157145",
+    "dark": "#036c52",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#157145",
+      "to": "#036c52"
     }
+  },
+  "background": {
+    "style": "gradient"
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Portal Login",
+      "url": "https://www.getbuildify.com/broker-portal"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Book Demo",
+    "url": "https://www.getbuildify.com/contact"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "name": "Coverage",
+      "icon": "globe",
+      "url": "https://www.getbuildify.com/worldwide"
     },
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://www.getbuildify.com/blog"
+    }
+  ],
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference",
+      "openapi": "/openapi.yaml"
     }
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Homepage",
+      "icon": "house",
+      "pages": ["reference/welcome-api", "reference/buildify-api-terms-of-use"]
+    },
+    {
+      "group": "Getting Started",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "reference/quickstart",
+        "reference/authentication-1",
+        "reference/error-handling",
+        "reference/terminology"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Listings",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "reference/api-products-and-provinces",
+        "reference/listings-endpoints",
+        "reference/search-listings",
+        "reference/get-a-listing",
+        "reference/get-multiple-listings",
+        "reference/get-profiles-of-a-listing",
+        "reference/get-similar-listings",
+        "reference/move-in-ready-listings",
+        "reference/get-facets-of-listing",
+        "reference/get-trending-listings",
+        "reference/featured-listings"
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "Profiles",
       "pages": [
-        "api-reference/introduction"
+        "reference/profiles-endpoints",
+        "reference/collections",
+        "reference/search-profiles",
+        "reference/get-a-profile",
+        "reference/get-multiple-profiles"
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Webhooks",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "reference/create-a-subscription",
+        "reference/list-subscriptions",
+        "reference/delete-a-subscription",
+        "reference/trigger-listing-webhook",
+        "reference/trigger-profile-webhook"
+      ]
+    },
+    {
+      "group": "API Parameters",
+      "pages": [
+        "reference/searching-params",
+        "reference/pagination",
+        "reference/filtering",
+        "reference/nearby-parameters",
+        "reference/retrievable-attributes",
+        "reference/referrencing",
+        "reference/faceting",
+        "reference/paths"
+      ]
+    },
+    {
+      "group": "Collections",
+      "pages": [
+        "reference/listing",
+        "reference/architect",
+        "reference/builder",
+        "reference/interior-designer",
+        "reference/marketer",
+        "reference/sales-company"
       ]
     }
-  ],
-  "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://linkedin.com/company/mintlify"
-  }
+  ]
 }

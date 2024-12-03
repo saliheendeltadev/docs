@@ -1,0 +1,56 @@
+---
+title: "API Products and Provinces"
+icon: box-open
+description: "The modes & supported provinces."
+---
+
+This document outlines the differences between Pro, Lite, and Sandbox modes for the GetBuildify API, along with information on supported provinces.
+
+## 1\. API Products
+
+The GetBuildify API offers three access modes:
+
+1. **Pro**: This mode provides unlimited access to all available data:
+   * Fetch an unlimited number of resources at once.
+   * View Listings with any selling status.
+   * Attach profiles (agents, builders, brokerages, interior designers, etc) or listings to response based on provided references.
+   * Include document files and floor plans for Listings.
+   Pro is ideal for users who need full access to all Realtor data.
+2. **Lite**: This mode is designed for basic use cases. It allows you to fetch a limited number of resources at once:
+   * Includes Listings with specific selling statuses: **Selling Now** and **Registration**.
+   * Does not allow aggregating profiles or listings data through references parameter.
+   * Does not include document files and floor plans for Listings.
+   Lite is a good option for users who only need access to a subset of data or who are concerned about data usage.
+3. **Sandbox**: This mode uses test data, it might not be accurate at all times.
+   * Only allow to fetch 5 resources at once.
+   * Do not allow to attach profiles or Listings.
+   * Include floor plans for Listings.
+   Sandbox is a good way to test your integration with the Realtor API before moving to a production environment.
+
+## 2\. Supported Provinces
+
+GetBuildify supports real estate data access across Canada:
+
+* Ontario (ON).
+* British Columbia (BC).
+* Alberta (AB) - Coming soon
+* Manitoba (MB) - Coming soon
+* New Brunswick (NB) - Coming soon
+* Newfoundland and Labrador (NL) - Coming soon
+* Nova Scotia (NS) - Coming soon
+* Prince Edward Island (PE) - Coming soon
+* Quebec (QC) - Coming soon
+* Saskatchewan (SK) - Coming soon
+
+**Construct the API endpoint URL**: Combine the province abbreviation and your chosen mode into the following format:
+
+* `api.getbuildify.com/v1/<province_abbreviation>` (Pro mode).
+* `api.getbuildify.com/v1-lite/<province_abbreviation>` (Lite mode).
+* `api.getbuildify.com/v1-sandbox/<province_abbreviation>` (Sandbox mode).
+
+For example:
+
+* To access Pro data for Ontario, use `api.getbuildify.com/v1/on`.
+* To access Lite data for British Columbia, use `api.getbuildify.com/v1-lite/bc`.
+
+**Default Province**: If you do not specify a province abbreviation in the URL, Ontario (on) will be used by default.

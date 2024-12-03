@@ -1,0 +1,139 @@
+---
+title: "Search"
+icon: magnifying-glass
+---
+
+**_String, Optional_**
+
+The query used to search, it accepts every character, and every character entered will be used in the search. There’s a hard limit of 512 characters. If a search string is longer, the API will return an error.
+
+An empty string can be used to fetch all objects.
+
+A sample search query looks like below:
+
+<Tabs>
+  <Tab title="Request">
+```JSON
+{
+	"search" : "Residences"
+}
+```
+  </Tab>
+  <Tab title="Response">
+```JSON
+
+{
+  "results": [
+    {
+      "ccOrMaintFee": 0.85,
+      "createdAt": "2022-05-10T03:37:01.065Z",
+      "logo": {
+        "name": "logo",
+        "url": ""
+      },
+      "municipalities": [
+        "C08"
+      ],
+      "numberOfIncentives": 1,
+      "long": "-79.39975460835134",
+      "paymentStructures": [],
+      "lat": "43.712229620096",
+      "name": "The Capitol Residences",
+      "photos": [],
+      "country": "Canada",
+      "owners": [],
+      "architects": [],
+      "amenities": [
+        "Pet-Friendly",
+        "Security Access",
+        "24 Hour Fitness Center",
+        "Community Lounge",
+        "Bike Parking",
+        "Sun Deck",
+        "Keyless Electronic Unit Entry"
+      ],
+      "state": "Ontario",
+      "parkingCost": 99000,
+      "numberOfFloorPlans": 0,
+      "postalCode": 555555,
+      "communities": [],
+      "neighbourhood": [
+        "Sherwood Park"
+      ],
+      "marketingCompanies": [],
+      "summary": "A STAR IS REBORN\n\nDirected by the award-winning team at Hariri Pontarini Architects and Turner Fleischer Architects, the famed Capitol Theatre has been transformed into a stunning 14-storey residence.\n\nComplete with interiors designed by Studio Munge, the stage is set to welcome a new era of inspiration to Toronto’s Midtown Village. ?From its 1914 debut to its last curtain call in 1998, the legend now known as The Capitol has been an icon of Toronto’s entertainment scene—treating three generations of theatergoers to eight decades of stage and screen gems.\n\nThe sumptuous 1,300-seat house, originally designed by John MacNee Jeffrey, was a decadent night out. Now reinvented as a grand new residence, it’s ready for a new era of memorable nights in.\n",
+      "estimatedCompletionDate": "2022-05-10T04:00:00.000Z",
+      "agents": [],
+      "numberOfPayments": 0,
+      "completionDate": "2022-05-18T04:00:00.000Z",
+      "cityOrDistrict": "Toronto",
+      "salesCompanies": [],
+      "type": [
+        "Condo"
+      ],
+      "storageCost": 6000,
+      "streetName": "Yonge Street",
+      "salesStarted": "2022-05-10T04:00:00.000Z",
+      "streetNumber": 2500,
+      "interiorDesigners": [],
+      "incentives": [
+        {
+          "date": "2022-05-10",
+          "description": "-FREE ASSIGNMENT* (Regular Assignment Fee of $10,000)\n\n-PERMISSION TO LEASE DURING OCCUPANCY*\n\n-CAPPED DEVELOPMENT CHARGES\n• $12,500 PLUS HST FOR 1 BEDROOM+DEN AND SMALLER\n• $18,000 PLUS HST FOR 2 BEDROOM AND LARGER\n\nEXTENDED DEPOSIT STRUCTURE\n$10,000 on signing\nBalance to 5% in 30 days\n5% in 90 days\n5% in 500 days\n5% on Occupancy\n\n*Incentives current as of May 2, 2022"
+        }
+      ],
+      "_geoloc": {
+        "lat": 43.712229620096,
+        "lng": -79.39975460835134
+      },
+      "firstOccupancyDate": "2022-05-11T04:00:00.000Z",
+      "status": "",
+      "builders": [
+        "Builders/P1VyhUGpSyRvopl8JJU0"
+      ],
+      "depositAmount1": "",
+      "constructionStatus": "Pre-construction",
+      "numberOfFloors": "14",
+      "path": "Listings/TP67S1",
+      "lastmodified": 1660853680456,
+      "objectID": "TP67S1"
+    }
+  ],
+  "total": 51,
+  "page": 0,
+  "pages": 51,
+  "perPage": 1
+}
+```
+  </Tab>
+
+</Tabs>
+
+> ## <Icon icon="book" />
+>
+> Note:
+>
+> The actual result size is much bigger. The above result has been limited to 1 per page for better illustration.
+
+### Scope of search
+
+Buildify searches within a fixed set of searchable attributes. Those are:
+
+#### For Listings:
+
+* name
+* summary
+* amenities
+* cityOrDistrict
+* streetName
+* country
+* neighbourhood
+* fullAddress
+
+#### For Profiles:
+
+* name
+* email
+* address
+* contact
+* website

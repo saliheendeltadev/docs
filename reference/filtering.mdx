@@ -1,0 +1,545 @@
+---
+title: "Filteration"
+icon: filter
+description: Filtering allows you to refine your results further, allowing you to be meaningfully search-based and provide a better front-end search experience.
+---
+
+## filterQuery
+
+**_String, Optional_**
+
+To do filtering, you must have the following parameters in the query:
+
+1. **`filterQuery`**
+
+`filterQuery` is used to apply filters or conditions to a dataset or query results, allowing users to retrieve specific information based on their desired criteria.
+
+This parameter accepts a query syntax, which works as shown below.
+
+```BASH Syntax
+
+{
+	"filterQuery":'attribute:value [AND | OR | NOT](#boolean-operators) attribute:value'
+  				'numeric_attribute [= | != | > | >= | < | <=](#numeric-comparisons) numeric_value'
+  				'attribute:lower_value TO higher_value'
+  				'[facetName:facetValue](#facet-filters)'
+  				'attribute:value'
+}
+```
+
+For example:
+
+<Tabs>
+  <Tab title="Request">
+```JSON
+{
+  "filterQuery": "constructionStatus:Pre-Construction AND numberOfFloorPlans > 2"
+}
+```
+  </Tab>
+  <Tab title="Response">
+```JSON
+
+{
+  "results": [
+    {
+      "name": "Junction Square Condos",
+      "numberOfFloorPlans": 23,
+      "constructionStatus": "Pre-construction",
+      "objectID": "YHK77J"
+    },
+    {
+      "name": "The Grove Condos",
+      "numberOfFloorPlans": 10,
+      "constructionStatus": "Pre-construction",
+      "objectID": "XA1OFU"
+    },
+    {
+      "constructionStatus": "Pre-construction",
+      "name": "Courcelette Condo",
+      "numberOfFloorPlans": 21,
+      "objectID": "WWN5T3"
+    },
+    {
+      "name": "The Homes of St. Gaspar",
+      "numberOfFloorPlans": 12,
+      "constructionStatus": "Pre-construction",
+      "objectID": "USGA32"
+    },
+    {
+      "name": "XO2 Condos",
+      "numberOfFloorPlans": 11,
+      "constructionStatus": "Pre-construction",
+      "objectID": "SB6LNE"
+    }
+  ],
+  "total": 13,
+  "page": 0,
+  "pages": 3,
+  "perPage": 5
+}
+```
+  </Tab>
+
+</Tabs>
+
+1. **`retrieveAttributes`**
+
+`retrieveAttributes` enables users to retrieve specific property attributes or details, such as selling status, type, and owners, for a particular listing or set of listings.
+
+You must input the attribute that you input in the `filterQuery`, for example:
+
+```JSON Syntax
+
+{
+     "retrieveAttributes": [
+          "constructionStatus",
+          "numberOfFloorPlans"
+     ],
+     "filterQuery": "constructionStatus:Pre-Construction AND numberOfFloorPlans > 2"
+}
+```
+
+> ## <Icon icon="book" />
+>
+> Info
+>
+> See **[this](https://docs.getbuildify.com/reference/retrievable-attributes)** page for more info about Retrievable Attributes.
+
+### Usage Examples
+
+Please refer to the usage examples of the `filterQuery` below to gain a deeper understanding:
+
+#### Filter By String
+<Tabs>
+  <Tab title="Request">
+```JSON
+
+{
+     "page": 0,
+     "perPage": 5,
+     "retrieveAttributes": [
+          "name",
+          "constructionStatus"
+     ],
+     "filterQuery": "constructionStatus:Pre-Construction"
+}
+```
+  </Tab>
+  <Tab title="Response">
+```JSON
+
+{
+  "results": [
+    {
+      "name": "Valhalla Town Square - South Tower",
+      "constructionStatus": "Pre-construction",
+      "objectID": "ZYYCGI"
+    },
+    {
+      "name": "Oasis",
+      "constructionStatus": "Pre-construction",
+      "objectID": "ZTTG6A"
+    },
+    {
+      "name": "The Georgian",
+      "constructionStatus": "Pre-construction",
+      "objectID": "ZR0EE2"
+    },
+    {
+      "name": "540 King Street West Condos",
+      "constructionStatus": "Pre-construction",
+      "objectID": "Z8ER1K"
+    },
+    {
+      "constructionStatus": "Pre-construction",
+      "name": "50 Merton Street Condos",
+      "objectID": "YS0XDK"
+    }
+  ],
+  "total": 117,
+  "page": 0,
+  "pages": 24,
+  "perPage": 5
+}
+```
+  </Tab>
+
+</Tabs>
+
+#### Filter by numeric value
+
+<Tabs>
+  <Tab title="Request">
+```JSON
+
+{
+     "page": 0,
+     "perPage": 1,
+     "retrieveAttributes": [
+          "name",
+          "floorPlans"
+     ],
+     "filterQuery": "floorPlans.startPrice > 1000"
+}
+```
+  </Tab>
+  <Tab title="Response">
+```JSON
+
+{
+  "results": [
+    {
+      "name": "Biblio Lofts",
+      "floorPlans": [
+        {
+          "exposure": [
+            "South"
+          ],
+          "floorRange": "",
+          "name": "205",
+          "startPrice": 939900,
+          "squareFeet": 782,
+          "lastUpdated": "2022-06-05T15:27:56.531Z",
+          "numberOfBathrooms": 1,
+          "image": {
+            "name": "Photo",
+            "url": "https://storage.googleapis.com/precon-app.appspot.com/fe503938-9da9-4c9e-b6a8-053ccffc46de.png"
+          },
+          "status": "Available",
+          "numberOfBedrooms": 1,
+          "createdAt": "2022-06-05T15:27:56.531Z",
+          "contactForPricing": false
+        },
+        {
+          "floorRange": "",
+          "name": "305",
+          "createdAt": "2022-06-05T15:29:15.730Z",
+          "squareFeet": 782,
+          "status": "Available",
+          "image": {
+            "name": "Photo",
+            "url": "https://storage.googleapis.com/precon-app.appspot.com/3bae57ee-458a-4ec3-841b-e8d0a4a438d9.png"
+          },
+          "numberOfBathrooms": 1,
+          "startPrice": 974900,
+          "contactForPricing": false,
+          "numberOfBedrooms": 1,
+          "lastUpdated": "2022-06-05T15:29:15.730Z",
+          "exposure": [
+            "South"
+          ]
+        },
+        {
+          "status": "Available",
+          "image": {
+            "url": "https://storage.googleapis.com/precon-app.appspot.com/b7c6766f-616f-465d-92a1-be2fb9ef4a57.png",
+            "name": "Photo"
+          },
+          "squareFeet": 782,
+          "startPrice": 999900,
+          "floorRange": "",
+          "lastUpdated": "2022-06-05T15:29:45.917Z",
+          "numberOfBathrooms": 1,
+          "numberOfBedrooms": 1,
+          "exposure": [
+            "South"
+          ],
+          "name": "405",
+          "createdAt": "2022-06-05T15:29:45.917Z",
+          "contactForPricing": false
+        },
+        {
+          "exposure": [
+            "North"
+          ],
+          "startPrice": 1174900,
+          "numberOfBathrooms": 2,
+          "createdAt": "2022-06-05T15:30:23.465Z",
+          "lastUpdated": "2022-06-05T15:30:23.465Z",
+          "image": {
+            "name": "Photo",
+            "url": "https://storage.googleapis.com/precon-app.appspot.com/852b43f6-1f7f-4a5d-8061-e6e8d9817086.png"
+          },
+          "name": "202",
+          "squareFeet": 905,
+          "numberOfBedrooms": 2,
+          "floorRange": "",
+          "contactForPricing": false,
+          "status": "Available"
+        },
+        {
+          "status": "Available",
+          "floorRange": "",
+          "createdAt": "2022-06-05T15:30:54.979Z",
+          "numberOfBedrooms": 2,
+          "squareFeet": 908,
+          "startPrice": 1129900,
+          "name": "203",
+          "image": {
+            "name": "Photo",
+            "url": "https://storage.googleapis.com/precon-app.appspot.com/0230aacc-582a-499f-a8f2-9d4fbcf6dd53.png"
+          },
+          "contactForPricing": false,
+          "lastUpdated": "2022-06-05T15:30:54.979Z",
+          "exposure": [
+            "North"
+          ],
+          "numberOfBathrooms": 1
+        },
+        {
+          "image": {
+            "name": "Photo",
+            "url": "https://storage.googleapis.com/precon-app.appspot.com/7ab480f1-0ef6-4883-8ae2-e57556884ff7.png"
+          },
+          "floorRange": "",
+          "squareFeet": 908,
+          "status": "Available",
+          "exposure": [
+            "North"
+          ],
+          "contactForPricing": false,
+          "createdAt": "2022-06-05T15:31:21.242Z",
+          "lastUpdated": "2022-06-05T15:31:21.242Z",
+          "numberOfBedrooms": 2,
+          "name": "403",
+          "startPrice": 1174900,
+          "numberOfBathrooms": 1
+        },
+        {
+          "numberOfBedrooms": 2,
+          "createdAt": "2022-06-05T15:31:47.158Z",
+          "exposure": [
+            "North"
+          ],
+          "image": {
+            "name": "Photo",
+            "url": "https://storage.googleapis.com/precon-app.appspot.com/e638ec85-7b1e-4c44-a55f-d1bac67ffbdb.png"
+          },
+          "startPrice": 1194900,
+          "lastUpdated": "2022-06-05T15:31:47.158Z",
+          "name": "304",
+          "numberOfBathrooms": 2,
+          "floorRange": "",
+          "status": "Available",
+          "contactForPricing": false,
+          "squareFeet": 923
+        }
+      ],
+      "objectID": "YYWB9W"
+    }
+  ],
+  "total": 25,
+  "page": 0,
+  "pages": 25,
+  "perPage": 1
+}
+```
+  </Tab>
+
+</Tabs>
+
+
+#### Filter by boolean
+<Tabs>
+  <Tab title="Request">
+```JSON
+
+{
+     "page": 0,
+     "perPage": 5,
+     "retrieveAttributes": [
+          "name",
+          "constructionStartedTBD"
+     ],
+     "filterQuery": "constructionStartedTBD:true"
+}
+```
+  </Tab>
+  <Tab title="JSON">
+```JSON
+{
+  "results": [
+    {
+      "constructionStartedTBD": true,
+      "name": "Valhalla Town Square - South Tower",
+      "objectID": "ZYYCGI"
+    },
+    {
+      "name": "Oasis",
+      "constructionStartedTBD": true,
+      "objectID": "ZTTG6A"
+    },
+    {
+      "constructionStartedTBD": true,
+      "name": "The Georgian",
+      "objectID": "ZR0EE2"
+    },
+    {
+      "name": "540 King Street West Condos",
+      "constructionStartedTBD": true,
+      "objectID": "Z8ER1K"
+    },
+    {
+      "constructionStartedTBD": true,
+      "name": "50 Merton Street Condos",
+      "objectID": "YS0XDK"
+    }
+  ],
+  "total": 96,
+  "page": 0,
+  "pages": 20,
+  "perPage": 5
+}
+```
+  </Tab>
+
+</Tabs>
+
+#### Filter an array
+
+An array filter returns true if any array elements match the given filtered value.
+<Tabs>
+  <Tab title="Request">
+```JSON
+
+{
+     "page": 0,
+     "perPage": 5,
+     "retrieveAttributes": [
+          "name",
+          "builders"
+     ],
+     "filterQuery": "builders:Builders/SvlJfjvxgniK5ywpcfUn"
+}
+```
+  </Tab>
+  <Tab title="Response">
+```JSON
+
+{
+  "results": [
+    {
+      "name": "Valhalla Town Square - South Tower",
+      "builders": [
+        "Builders/SvlJfjvxgniK5ywpcfUn"
+      ],
+      "objectID": "ZYYCGI"
+    },
+    {
+      "builders": [
+        "Builders/SvlJfjvxgniK5ywpcfUn"
+      ],
+      "name": "Park Terraces at Valhalla Town Square",
+      "objectID": "0FT1O4"
+    }
+  ],
+  "total": 2,
+  "page": 0,
+  "pages": 1,
+  "perPage": 5
+}
+```
+  </Tab>
+
+</Tabs>
+
+### Using Boolean Operators
+
+Buildify supports the following boolean operations on filters.
+
+* **OR**: must match any combined conditions (disjunction).
+* **AND**: must match all combined conditions (conjunction).
+* **NOT**: negates a filter
+
+Finally, parentheses (and) can be used for grouping.
+<Tabs>
+  <Tab title="Request">
+```JSON
+
+{
+     "page": 0,
+     "perPage": 5,
+     "retrieveAttributes": [
+          "name",
+          "municipalities",
+          "builders"
+     ],
+     "filterQuery": "(municipalities:C08 OR municipalities:C01) AND builders:Builders/WKWeAkR8fzENjPJBSEAF"
+}
+```
+  </Tab>
+  <Tab title="Response">
+```JSON
+
+{
+  "results": [
+    {
+      "municipalities": [
+        "C08"
+      ],
+      "builders": [
+        "Builders/WKWeAkR8fzENjPJBSEAF"
+      ],
+      "name": "The Gloucester on Yonge",
+      "objectID": "YM4O52"
+    },
+    {
+      "name": "Concord Sky",
+      "builders": [
+        "Builders/WKWeAkR8fzENjPJBSEAF"
+      ],
+      "municipalities": [
+        "C08"
+      ],
+      "objectID": "SI9JL7"
+    },
+    {
+      "municipalities": [
+        "C01"
+      ],
+      "name": "Concord Canada House",
+      "builders": [
+        "Builders/WKWeAkR8fzENjPJBSEAF"
+      ],
+      "objectID": "636CPY"
+    }
+  ],
+  "total": 3,
+  "page": 0,
+  "pages": 1,
+  "perPage": 5
+}
+```
+  </Tab>
+
+</Tabs>
+
+### Filterable attributes
+
+Filterable attributes refer to the characteristics or properties of a dataset that can be used as criteria to filter or narrow down the results of a search or query. Take a look at the attributes offered by Buildify in the following list:
+
+#### For Listings
+
+| agents                       | architects                  | amenities                  |
+| ---------------------------- | --------------------------- | -------------------------- |
+| brokerages                   | builders                    | cityOrDistrict             |
+| communities                  | completionDateTBD           | constructionStartedTBD     |
+| constructionStatus           | country                     | estimatedCompletionDateTBD |
+| firstOccupancyDateTBD        | floorPlans.exposure         | floorPlans.floorPlanType   |
+| floorPlans.numberOfBathrooms | floorPlans.numberOfBedrooms | floorPlans.squareFeet      |
+| floorPlans.startPrice        | interiorDesigners           | marketingCompanies         |
+| municipalities               | name                        | neighbourhood              |
+| numberOfFloorPlans           | numberOfFloors              | numberOfIncentives         |
+| numberOfPayments             | numberOfRealtorPayouts      | numberOfUnits              |
+| owners                       | realtorCommission           | realtorCommissionByContact |
+| salesCentres                 | salesCompanies              | salesStartedTBD            |
+| sellingStatus                | state                       | streetName                 |
+| type                         | startPrice                  | endPrice                   |
+| contactForPricing            |                             |                            |
+
+#### For profiles
+
+| name    | email   | contact  |
+| ------- | ------- | -------- |
+| website | address | listings |

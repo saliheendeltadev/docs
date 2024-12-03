@@ -1,0 +1,45 @@
+---
+icon: flag
+title: "Error Handling"
+description: "Learn how to handle common errors in Buildify API."
+---
+
+We dedicated this article for you to help solve errors in our API. Have a look at the error description below, or go straight to the causes and suggestions.
+
+## Response Codes
+
+We use the HTTP status code, where status codes in the range `2xx` indicate success, status codes in the range `4xx` indicate failure, and status codes in the range `5xx` indicate a server fault.
+
+See the table below for further information:
+
+| Status Code                   | Description                                       |
+| ----------------------------- | ------------------------------------------------- |
+| 200 - <Icon icon="square-check" /> Success               | Request successfully processed/created.           |
+| 400 - <Icon icon="xmark" /> Bad Request           | The request was unacceptable.                     |
+| 403 - <Icon icon="xmark" /> Forbidden             | You don't have permission to perform the request. |
+| 404 - <Icon icon="xmark" /> Not Found             | The requested resource doesn't exist.             |
+| 500 - <Icon icon="xmark" /> Internal Server Error | Something went wrong on our side.                 |
+
+## Error Troubleshoots
+
+Here is our recommendation for handling errors:
+
+### 400 - Bad Request
+
+<Icon icon="bomb" /> **Cause**: This error occurs because of invalid syntax or missing a required parameter.<br/>
+<Icon icon="screwdriver-wrench" /> **Solution**: Recheck the request that you input. Make sure it has followed the requirements.
+
+### 403 - Forbidden
+
+<Icon icon="bomb" /> **Cause**: This error occurs when you cannot access the requested page.<br/>
+<Icon icon="screwdriver-wrench" /> **Solution**: Double-check the URL and make sure you input an actual web page file name and extension.
+
+### 404 - Not Found
+
+<Icon icon="bomb" /> **Cause**: This error occurs because you provided the wrong URL or the ID you requested is not associated with Buildify.<br/>
+<Icon icon="screwdriver-wrench" /> **Solution**: Use the correct URL (check for typos and our API documentation carefully).
+
+### 500 - Internal Server Error
+
+<Icon icon="bomb" /> **Cause**: This error occurs when Buildify has encountered an internal system error.<br/>
+<Icon icon="screwdriver-wrench" /> **Solution**: You can retry later, or please get in touch with our support if you keep getting this error.

@@ -1,0 +1,343 @@
+---
+title: "Faceting"
+icon: magnifying-glass
+description: Faceting allows you to get a count on specific attributes available based on your search.
+---
+
+## facets
+
+**_Array of string, Optional_**
+
+
+Faceting gives you an idea of what attributes are available within your search. This can help end users select from various facets and filter listings, providing a great front-end experience for the end users.
+
+Buildify currently supports plenty of attributes for facets such as:
+
+* type
+* agents
+* owners
+* country
+* builders
+* amenities
+* architects
+* brokerages
+* communities
+* salesCentres
+* neighbourhood
+* cityOrDistrict
+* municipalities
+* salesCompanies
+* marketingCompanies
+
+A simple run to `getFacetCounts` with `facets=["*"]` will provide all the available facets with their counts.
+
+```JSON Facets
+
+{
+  "type": {
+    "Condo": 155,
+    "Townhouse": 47,
+    "Single Family Home": 7
+  },
+  "agents": {
+    "Agents/44ID0o7hITDFQpPLB56b": 1
+  },
+  "owners": {
+    "Owners/RhlTKtN8hAxQeSBWV8u0": 3
+  },
+  "country": {
+    "Canada": 186
+  },
+  "builders": {
+    "Builders/qlUGOOwez5tUFZ1TYi3o": 6,
+    "Builders/MiltzUNTqLZLDqO4j35k": 5,
+    "Builders/NYv468NPic57dwCRDz8a": 5,
+    "Builders/P1VyhUGpSyRvopl8JJU0": 5,
+    "Builders/hHE9I4XPOBYn2jLlWfDQ": 5,
+    "Builders/BEjGHxTQ7jVCDnJ0RFLf": 4
+  },
+  "amenities": {
+    "Party Room": 29,
+    "Fitness Centre": 24,
+    "Yoga Studio": 20,
+    "BBQ Area": 12,
+    "24-hour concierge": 10,
+    "Outdoor Terrace": 10
+  },
+  "architects": {
+    "Architects/7VCS1oL7q40LlVyCifz9": 15,
+    "Architects/A2Dc3i7RRoDpspPJelrp": 8,
+    "Architects/OqfG13GI0voKdfteWXKC": 8,
+    "Architects/KDxeUMlzUncEjKerNf9t": 6,
+    "Architects/iS5n0h3EjZI8VLzfIuQ4": 5,
+    "Architects/qTVx6Xd9PBd9S6XUPxf1": 5
+  },
+  "brokerages": {
+    "Brokerages/z4KyROBDpXyacBnavR9k": 1
+  },
+  "communities": {
+    "Communities/i58PTsKEKwtfMNgZjJza": 2,
+    "Communities/8iddPeDtCHo2hUTavJ58": 1,
+    "Communities/CBL6rOog3JGDEDFSuj2M": 1
+  },
+  "salesCentres": {
+    "SalesCentres/NwpgmXlMHnqiaJ2ii9xW": 2
+  },
+  "neighbourhood": {
+    "Sherwood Park": 9,
+    "The Queensway": 8,
+  },
+  "cityOrDistrict": {
+    "Toronto": 186
+  },
+  "municipalities": {
+    "C08": 22,
+    "C01": 21,
+    "C02": 11,
+    "W02": 10,
+    "W08": 10,
+    "C10": 9
+  },
+  "salesCompanies": {
+    "SalesCompanies/oS8cOQZcsBs4BWwFkfqn": 13,
+    "SalesCompanies/IAItdUQirIrFZ2hMfSSn": 11,
+    "SalesCompanies/ba4RvxWbeYXwDcgQJ0hO": 8
+  },
+  "interiorDesigners": {
+    "InteriorDesigners/9715t6uxsL5q5g9jDIqH": 9,
+    "InteriorDesigners/H3H5ptxRrlK5EbeIYjSK": 9,
+    "InteriorDesigners/NvtlJSzvmJJoT0BbSIRU": 4,
+  },
+  "marketingCompanies": {
+    "Marketers/NxSBZCfHPjEod190tsyO": 11,
+    "Marketers/OqDBR2Iqy29cMJ3Pi0Bp": 9,
+    "Marketers/fsHEps24lbs9kO1UxZ7w": 5,
+    "Marketers/5DQb8M8Mm4RAqiGqfljA": 4,
+    "Marketers/QG9xGbsooqc5p2qgTihv": 3,
+    "Marketers/QOWed7CGYBVyYgOaCVxD": 3,
+    "Marketers/thLBYkCgOx0QIWxviAC4": 3
+  }
+}
+```
+
+> ## <Icon icon="book" />
+>
+> Note:
+>
+> The actual response may be different. For illustration purposes, the response has been limited.
+
+Within your search query, you can use `facets=["amenities"]` to retrieve counts of each of the amenities available within your search.
+
+Facets are returned in the response with the `facets` key, where each object represents a facet.
+
+> Returned facet counts represent the whole search result,s not just the paginated one (results that are there but not returned due to pagination).
+
+#### Example
+<Tabs>
+  <Tab title="Request">
+```JSON
+
+{
+     "search": "Residences",
+     "page": 0,
+     "perPage": 1,
+     "facets": [
+          "amenities"
+     ]
+}
+```
+  </Tab>
+  <Tab title="Response">
+```JSON
+
+{
+  "results": [
+    {
+      "ccOrMaintFee": 0.85,
+      "brokerages": [],
+      "createdAt": "2022-05-10T03:37:01.065Z",
+      "logo": {
+        "name": "logo",
+        "url": ""
+      },
+      "municipalities": [
+        "C08"
+      ],
+      "numberOfIncentives": 1,
+      "long": "-79.39975460835134",
+      "paymentStructures": [],
+      "lat": "43.712229620096",
+      "name": "The Capitol Residences",
+      "photos": [],
+      "country": "Canada",
+      "owners": [],
+      "architects": [],
+      "amenities": [
+        "Pet-Friendly",
+        "Security Access",
+        "24 Hour Fitness Center",
+        "Community Lounge",
+        "Bike Parking",
+        "Sun Deck",
+        "Keyless Electronic Unit Entry"
+      ],
+      "state": "Ontario",
+      "parkingCost": 99000,
+      "numberOfFloorPlans": 0,
+      "postalCode": 555555,
+      "communities": [],
+      "neighbourhood": [
+        "Sherwood Park"
+      ],
+      "marketingCompanies": [],
+      "summary": "A STAR IS REBORN\n\nDirected by the award-winning team at Hariri Pontarini Architects and Turner Fleischer Architects, the famed Capitol Theatre has been transformed into a stunning 14-storey residence.\n\nComplete with interiors designed by Studio Munge, the stage is set to welcome a new era of inspiration to Toronto’s Midtown Village. ?From its 1914 debut to its last curtain call in 1998, the legend now known as The Capitol has been an icon of Toronto’s entertainment scene—treating three generations of theatergoers to eight decades of stage and screen gems.\n\nThe sumptuous 1,300-seat house, originally designed by John MacNee Jeffrey, was a decadent night out. Now reinvented as a grand new residence, it’s ready for a new era of memorable nights in.\n",
+      "estimatedCompletionDate": "2022-05-10T04:00:00.000Z",
+      "agents": [],
+      "numberOfPayments": 0,
+      "completionDate": "2022-05-18T04:00:00.000Z",
+      "cityOrDistrict": "Toronto",
+      "salesCompanies": [],
+      "type": [
+        "Condo"
+      ],
+      "storageCost": 6000,
+      "streetName": "Yonge Street",
+      "salesStarted": "2022-05-10T04:00:00.000Z",
+      "streetNumber": 2500,
+      "interiorDesigners": [],
+      "incentives": [
+        {
+          "date": "2022-05-10",
+          "description": "-FREE ASSIGNMENT* (Regular Assignment Fee of $10,000)\n\n-PERMISSION TO LEASE DURING OCCUPANCY*\n\n-CAPPED DEVELOPMENT CHARGES\n• $12,500 PLUS HST FOR 1 BEDROOM+DEN AND SMALLER\n• $18,000 PLUS HST FOR 2 BEDROOM AND LARGER\n\nEXTENDED DEPOSIT STRUCTURE\n$10,000 on signing\nBalance to 5% in 30 days\n5% in 90 days\n5% in 500 days\n5% on Occupancy\n\n*Incentives current as of May 2, 2022"
+        }
+      ],
+      "_geoloc": {
+        "lat": 43.712229620096,
+        "lng": -79.39975460835134
+      },
+      "firstOccupancyDate": "2022-05-11T04:00:00.000Z",
+      "status": "",
+      "builders": [
+        "Builders/P1VyhUGpSyRvopl8JJU0"
+      ],
+      "depositAmount1": "",
+      "constructionStatus": "Pre-construction",
+      "numberOfFloors": "14",
+      "path": "Listings/TP67S1",
+      "lastmodified": 1660853680456,
+      "objectID": "TP67S1"
+    }
+  ],
+  "total": 51,
+  "page": 0,
+  "pages": 51,
+  "perPage": 1,
+  "facets": {
+    "amenities": {
+      "Party Room": 9,
+      "Yoga Studio": 7,
+      "Sun Deck": 6,
+      "24 Hour Fitness Center": 5,
+      "BBQ Area": 5,
+      "Bike Parking": 5,
+      "Community Lounge": 5,
+      "Fitness Centre": 5,
+      "Keyless Electronic Unit Entry": 5,
+      "Pet-Friendly": 5,
+      "Security Access": 5,
+      "24-hour concierge": 4,
+      "Co-working Space": 4,
+      "Yoga Room": 4,
+      "Billiards Room": 3,
+      "Fitness Room": 3,
+      "Fitness Studio": 3,
+      "Gym": 3,
+      "Lobby": 3,
+      "Swimming Pool": 3,
+      "Catering Kitchen": 2,
+      "Children's Play Area": 2,
+      "Co-Working Spaces": 2,
+      "Concierge": 2,
+      "Coworking Lounge": 2,
+      "Fire Pit": 2,
+      "Guest Suite": 2,
+      "Kid's Zone": 2,
+      "Library": 2,
+      "Lobby Lounge": 2,
+      "Lounge": 2,
+      "Nest Thermostat": 2,
+      "Outdoor Lounge": 2,
+      "Outdoor Lounge Area": 2,
+      "Outdoor Terrace": 2,
+      "Parcel Room": 2,
+      "Pet Play Area": 2,
+      "Pet wash station": 2,
+      "Private Dining Room": 2,
+      "Sauna": 2,
+      "Terrace": 2,
+      "Wi-Fi": 2,
+      "dining and lounge area": 2,
+      "24 Hour Concierge Service": 1,
+      "Arcade Games": 1,
+      "BBQ Kitchenette and Outdoor Seating Area": 1,
+      "Bar & Lounge": 1,
+      "Bike Elevator": 1,
+      "Bike Repair Station": 1,
+      "Bike Wash Station": 1,
+      "Bocce Court": 1,
+      "Bowling Alley": 1,
+      "Cabanas": 1,
+      "Change Rooms": 1,
+      "Chef's Kitchen": 1,
+      "Children's Den": 1,
+      "Children's Playground": 1,
+      "Co-Working Space with Kitchen": 1,
+      "Common Area": 1,
+      "Concierge Service": 1,
+      "Coworking Space": 1,
+      "Cycling Simulator": 1,
+      "Demonstration Kitchen": 1,
+      "Dining Room": 1,
+      "Dining Room with Catering Kitchen": 1,
+      "Dog Wash Area": 1,
+      "EV Parking Stalls": 1,
+      "Exercise/Fitness Room": 1,
+      "Fireplace Lounge": 1,
+      "Fitness Area": 1,
+      "Fitness Centre and Yoga Studio": 1,
+      "Fitness Centre with TRX": 1,
+      "Fitness Space": 1,
+      "Game Area": 1,
+      "Games Area": 1,
+      "Games Room": 1,
+      "Gear Room": 1,
+      "Golf Simulator": 1,
+      "Guest Suites": 1,
+      "Gym Facilities": 1,
+      "Hot Tub": 1,
+      "Indoor Cool Plunge Pool": 1,
+      "Indoor Pool": 1,
+      "Indoor Whirlpool": 1,
+      "Indoor and Outdoor Dining Areas": 1,
+      "Indoor/Outdoor Party Room": 1,
+      "Kid's Play Room": 1,
+      "Kids Craft Area": 1,
+      "Landscape Amenity Terrace": 1,
+      "Landscaped Courtyard": 1,
+      "Landscaped Outdoor Terrace": 1,
+      "Lawn Bowling Lanes": 1,
+      "Lobby Attendant": 1,
+      "Lounge Deck": 1,
+      "Lounge Spaces": 1,
+      "Mail Room": 1,
+      "Massage Therapy Room": 1,
+      "Media Centre": 1,
+      "Media Room": 1,
+      "Meeting Room": 1
+    }
+  }
+}
+```
+  </Tab>
+
+</Tabs>

@@ -1,0 +1,81 @@
+---
+title: "Retrievable Attributes"
+icon: filter
+description: Listing objects can be very large, and searching for those can return huge amounts of data. Fetching huge amounts of unwanted data will only affect your latency and front-end experience. To avoid these problems, Buildify provides another parameter that helps you retrieve data for only those attributes you want to use.
+---
+
+## retrieveAttributes
+
+**_Array of Strings, Optional, Default: \["\*"\]_**
+
+By default, endpoints provide all the data fields. You can limit those fields by specifying which attributes to retrieve in an array.
+
+Works for both listings and profiles endpoints.
+
+#### Example
+<Tabs>
+  <Tab title="Request">
+```JSON
+
+{
+     "search": "Residences",
+     "perPage": 5,
+     "retrieveAttributes": [
+          "name",
+          "country",
+          "streetName"
+     ]
+}
+```
+  </Tab>
+  <Tab title="Response">
+```JSON
+
+{
+  "results": [
+    {
+      "name": "The Capitol Residences",
+      "country": "Canada",
+      "streetName": "Yonge Street",
+      "objectID": "TP67S1"
+    },
+    {
+      "country": "Canada",
+      "name": "UOVO Boutique Residences",
+      "streetName": " Yonge Street",
+      "objectID": "SKOKP9"
+    },
+    {
+      "country": "Canada",
+      "streetName": "Kingston Road",
+      "name": "The View Beach Residences",
+      "objectID": "S4BN5H"
+    },
+    {
+      "country": "Canada",
+      "streetName": "Yonge Street",
+      "name": "The Capitol Residences",
+      "objectID": "RZJTVG"
+    },
+    {
+      "name": "The Capitol Residences",
+      "streetName": "Yonge Street",
+      "country": "",
+      "objectID": "P42YGZ"
+    }
+  ],
+  "total": 51,
+  "page": 0,
+  "pages": 11,
+  "perPage": 5
+}
+```
+  </Tab>
+
+</Tabs>
+
+> ## <Icon icon="book" />
+>
+> Info
+>
+> `retrieveAttributes` are required when you perform filter operations with `filterQuery`.

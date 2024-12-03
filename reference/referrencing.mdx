@@ -1,0 +1,144 @@
+---
+title: "Referrencing"
+icon: link
+description: Every object is linked to other objects in some way or another. For example, Listings have many agents, builders, brokerages, interior designers, etc., whereas agents, builders, and brokerages also have many listings.
+---
+
+To manage this many-to-many relationship at the database level, buildify maintains listings, builders, brokerages, etc. in separate collections. And links them together with referrences.
+
+A run to `getProfilesOfListing` for listing ID `ZXGJ8B` will show you all the different profiles to which a listing referrences to.
+
+```JSON Listing : ZXGJ8B
+
+{
+  "agents": [],
+  "salesCentres": [
+    "SalesCentres/6lHjY2Z0SoGSqqKsyFa3"
+  ],
+  "brokerages": [],
+  "salesCompanies": [
+    "SalesCompanies/lBVB5SvDop3WNC550Jp4"
+  ],
+  "marketingCompanies": [
+    "Marketers/QOWed7CGYBVyYgOaCVxD"
+  ],
+  "interiorDesigners": [
+    "InteriorDesigners/vuLcsotpqYMNwh3Peht7"
+  ],
+  "communities": [],
+  "architects": [
+    "Architects/qTVx6Xd9PBd9S6XUPxf1"
+  ],
+  "builders": [
+    "Builders/5fH9CC8jgOxPuxqyMk70"
+  ],
+  "owners": [],
+  "id": "ZXGJ8B"
+}
+```
+
+Similarly, a run to `getAProfile` for Builder with ID `5fH9CC8jgOxPuxqyMk70` will show Listing with `ZXGJ8B` as its referrence.
+
+```JSON Builder: 5fH9CC8jgOxPuxqyMk70
+
+{
+  "chargeableConciliations": 0,
+  "name": "Diamond Kilmer Developments",
+  "listings": [
+    "Listings/0WGIV1",
+    "Listings/ZXGJ8B"
+  ],
+  "email": "[[email protected]](/cdn-cgi/l/email-protection)",
+  "noticesIssued": 0,
+  "rating": 0,
+  "totalFreeholdProperties": 0,
+  "disciplinaryActivities": 0,
+  "review": "",
+  "website": "http://diamondkilmer.ca/",
+  "totalPossessions": 0,
+  "dollarsPaidInClaims": 0,
+  "condominiumUnits": 0,
+  "logo": "https://storage.googleapis.com/precon-app.appspot.com/ae939a1a-ff6e-46a9-844a-68ac53691820.png",
+  "tarionActionOnBehalf": 0,
+  "address": "22 Saint Clair Avenue West, 1010, Toronto, Ontario, Canada",
+  "breach": 0,
+  "contact": 4165191099,
+  "outstandingClaimsPaidOwing": 0,
+  "path": "Builders/5fH9CC8jgOxPuxqyMk70",
+  "id": "5fH9CC8jgOxPuxqyMk70"
+}
+```
+
+Similarly, to get all profiles for a listing, you can run multiple `getAProfile` endpoints for each of the referrences and merge data on the front end. But this can be time-consuming and tedious. To make it easier for you to collate/attach referred data, buildify provides a `referrences` parameter, which you make use of to let API know that you need profile data attached to the response.
+
+## referrences
+
+**_Array of string, Optional_**
+
+By default, to limit the response size, endpoints do not attach referred data. You can override this by using this parameter. Suppose you want Builders data attached to the listing object, as shown above.
+
+Your request would look as shown below.
+
+Endpoint replaces the referred path with the corresponding object.
+<Tabs>
+  <Tab title="Request">
+```JSON
+
+{
+     "retrieveAttributes": [
+          "name",
+          "builders",
+          "summary",
+          "marketingCompanies"
+     ],
+     "referrences": [
+          "builders"
+     ],
+     "id": "ZXGJ8B"
+}
+```
+  </Tab>
+  <Tab title="Response">
+```JSON
+
+{
+  "name": "Reunion Crossing Condos & Urban Towns",
+  "summary": "The spacious urban townhomes at Reunion Crossing are an incredible place to call home. Open-concept floor plans, 2-storey designs, and exclusive rooftop patios and sunken terraces make these homes a great option for young professionals and growing families. Even better, townhome residents will have access to all of the exciting amenities in the condominium next door. Discover a space that has been crafted to meet all of your needs, and reunite with the home you truly love.\n\nWhen you call a Reunion Crossing condominium home, every day will be an opportunity to reunite with sophisticated, intelligent, urban living. The innovative lobby has been reimagined into a space you will actually use, with workspaces and lounge areas. Even more impressive are the well laid-out, open concept suites, which let you rediscover just how beautiful city life really can be.",
+  "marketingCompanies": [
+    "Marketers/QOWed7CGYBVyYgOaCVxD"
+  ],
+  "builders": [
+    {
+      "chargeableConciliations": 0,
+      "totalFreeholdProperties": 0,
+      "tarionActionOnBehalf": 0,
+      "review": "",
+      "contact": 4165191099,
+      "rating": 0,
+      "totalPossessions": 0,
+      "email": "[[email protected]](/cdn-cgi/l/email-protection)",
+      "logo": "https://storage.googleapis.com/precon-app.appspot.com/ae939a1a-ff6e-46a9-844a-68ac53691820.png",
+      "address": "22 Saint Clair Avenue West, 1010, Toronto, Ontario, Canada",
+      "breach": 0,
+      "outstandingClaimsPaidOwing": 0,
+      "name": "Diamond Kilmer Developments",
+      "disciplinaryActivities": 0,
+      "website": "http://diamondkilmer.ca/",
+      "noticesIssued": 0,
+      "listings": [
+        "Listings/0WGIV1",
+        "Listings/ZXGJ8B"
+      ],
+      "dollarsPaidInClaims": 0,
+      "condominiumUnits": 0,
+      "id": "5fH9CC8jgOxPuxqyMk70",
+      "path": "Builders/5fH9CC8jgOxPuxqyMk70",
+      "collection": "Builders"
+    }
+  ],
+  "id": "ZXGJ8B"
+}
+```
+  </Tab>
+
+</Tabs>

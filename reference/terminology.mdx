@@ -1,0 +1,242 @@
+---
+icon: book-open
+title: "Terminology"
+description: "Get familiar with the terms we use in our API!"
+---
+
+The following tables present a summary of different response fields that are relevant to the listings. Each field provides important information to help developers better understand the responses. The table information can serve as a useful reference point for further exploration of the Buildify API.
+
+## 1\. Listing Identifiers
+
+| Field       | Data Type | Description                       |
+| ----------- | --------- | --------------------------------- |
+| listingId   | string    | The listing ID of the building.   |
+| objectID    | string    | The ID of the object.             |
+| name        | string    | The name of the building.         |
+| fullAddress | string    | The full address of the building. |
+
+## 2\. Partners/Profiles
+
+| Field              | Data Type        | Description                                                                          |
+| ------------------ | ---------------- | ------------------------------------------------------------------------------------ |
+| owners             | array            | An array of owners of the building.                                                  |
+| builders           | array of strings | An array of the builders of the building.                                            |
+| brokerages         | array            | An array of brokerages associated with the building.                                 |
+| architects         | array of strings | An array of architects who worked on the building.                                   |
+| interiorDesigners  | array of strings | An array of interior designers of the building.                                      |
+| salesCompanies     | array of strings | An array of companies are involved in the sales of the building.                     |
+| marketingCompanies | array of strings | An array of companies are involved in the marketing of the building.                 |
+| path               | string           | The path details of the building. The path is made up of the collection name and ID. |
+
+## 3\. Location Details
+
+| Field             | Data Type        | Description                                                                              |
+| ----------------- | ---------------- | ---------------------------------------------------------------------------------------- |
+| geographicAddress | string           | The geographic address of the building.                                                  |
+| country           | string           | The country where the building is located.                                               |
+| region            | string           | The region where the building is located.                                                |
+| streetNumber      | integer          | The street number of the building.                                                       |
+| streetName        | string           | The name of the street where the building is located.                                    |
+| state             | string           | The state or region where the buildingis located.                                        |
+| cityOrDistrict    | string           | The city or district where the buildingis located.                                       |
+| postalCode        | string           | The postal code of the building.                                                         |
+| neighbourhood     | array of strings | An array of strings containing the names of the neighbourhoods nearby.                   |
+| municipalities    | array of strings | An array of municipalities where the building is located.                                |
+| lat               | string           | The latitude of the building's location.                                                 |
+| long              | string           | The longitude of the building's location.                                                |
+| \_geoloc          | object           | An object containing the latitude and longitude of the building's location.              |
+| \_geoloc.lat      | number           | The latitude of the building.                                                            |
+| \_geoloc.lng      | number           | The longitude of the building.                                                           |
+| exposures         | array of strings | A list of the cardinal directions in which a particular construction project is exposed. |
+
+## 4\. Timelines
+
+| Field                      | Data Type | Description                                                      |
+| -------------------------- | --------- | ---------------------------------------------------------------- |
+| constructionStatus         | string    | The current construction status of the building.                 |
+| sellingStatus              | string    | The current selling status of the building.                      |
+| salesStarted               | string    | The date when the sales of the building started.                 |
+| estimatedCompletionDate    | string    | The estimated completion date for the building.                  |
+| estimatedCompletionDateTBD | boolean   | Indicates whether estimated completion date is to be determined. |
+| completionDate             | string    | The completion date of the building.                             |
+| completionDateTBD          | boolean   | Whether the completion date for a building is to be determined.  |
+| constructionStartedTBD     | boolean   | Indicates whether the start of construction is to be determined. |
+| firstOccupancyDate         | string    | The first occupancy date of the building.                        |
+| firstOccupancyDateTBD      | boolean   | Indicates whether the first occupancy date is to be determined.  |
+| completionYear             | integer   | The year when the building is expected to be completed.          |
+| constructionStartedYear    | integer   | The year when the construction of the building started.          |
+| estimatedCompletionYear    | string    | The estimated year of completion of the building.                |
+| firstOccupancyYear         | integer   | The year when the project is first occupied.                     |
+| salesStartedYear           | string    | The year when sales for the project started.                     |
+
+> ## <Icon icon="book" />
+>
+> Info!
+>
+> To view how lisitng details can be viewed in our portal visit [this](https://docs.getbuildify.com/docs/listing-details) page.
+
+## 5\. Project Prices
+
+| Field                 | Data Type | Description                                                                                                                                                      |
+| --------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| startPrice            | string    | The starting price of all the floorplans.                                                                                                                        |
+| endPrice              | string    | The ending price of all the floorplans.                                                                                                                          |
+| averagePricePerSqFeet | integer   | The average price per square foot.                                                                                                                               |
+| endPricePerSqFeet     | integer   | The end price per square foot.                                                                                                                                   |
+| startPricePerSqFeet   | integer   | The starting price per square foot.                                                                                                                              |
+| contactForPricing     | boolean   | Indicates whether there is startPrice and endPrice for the whole project. If there's no startPrice and endPrice for the whole project, then the default is true. |
+
+## 6\. Features
+
+| Field            | Data Type        | Description                                                                  |
+| ---------------- | ---------------- | ---------------------------------------------------------------------------- |
+| type             | array of strings | The type of building.                                                        |
+| summary          | string           | The summary of the building.                                                 |
+| photos           | array of objects | An array of objects containing information about the photos of the building. |
+| photos.createdAt | string           | The creation date of the photo.                                              |
+| photos.name      | string           | The name of the photo.                                                       |
+| photos.tags      | array of strings | An array of strings containing tags associated with the photo.               |
+| photos.type      | string           | The type of the photo.                                                       |
+| photos.url       | string           | The url of the photo.                                                        |
+| videos           | array            | An array of videos of the building.                                          |
+| logo             | object           | An object that contains information about the logo of the building.          |
+| logo.name        | string           | The name of the logo.                                                        |
+| logo.url         | string           | The URL of the logo.                                                         |
+| coverPhoto       | object           | An object containing information about the cover photo of the building.      |
+| coverPhoto.name  | string           | The name of the cover photo file.                                            |
+| coverPhoto.url   | string           | The URL of the cover photo file.                                             |
+| finishes         | string           | Information about the finishes used in the building.                         |
+| maxBaths         | number           | The maximum number of bathrooms in the building.                             |
+| minBaths         | integer          | The minimum number of bathrooms in the building.                             |
+| maxBeds          | number           | The maximum number of bedrooms in the building.                              |
+| minBeds          | integer          | The minimum number of bedrooms in the building.                              |
+| maxSize          | integer          | The maximum size of the property in square feet.                             |
+| minSize          | integer          | The minimum size of the property in square feet.                             |
+| ceilingHeights   | string           | The ceiling height of the building.                                          |
+| amenities        | array of strings | An array of amenities available in the building.                             |
+| virtualShowing   | string           | The URL or platform used for virtual building showings.                      |
+
+### a. Parking
+
+| Field                       | Data Type | Description                                                                      |
+| --------------------------- | --------- | -------------------------------------------------------------------------------- |
+| hasParking                  | boolean   | Whether the building has parking.                                                |
+| parkingRestriction          | string    | The parking restrictions on the building.                                        |
+| parkingCost                 | integer   | The parking cost of the building.                                                |
+| parkingCostIncluded         | boolean   | Indicates whether parking cost is included in the pricing of the building.       |
+| parkingMaintainance         | integer   | The cost of parking maintenance.                                                 |
+| parkingMaintainanceIncluded | boolean   | Indicates whether parking maintenance is included in the pricing of the building |
+
+### b. Locker
+
+| Field                      | Data Type | Description                                                    |
+| -------------------------- | --------- | -------------------------------------------------------------- |
+| hasLocker                  | boolean   | Indicates whether the building has a locker.                   |
+| lockerMaintainance         | integer   | The locker maintenance fee for the building.                   |
+| lockerMaintainanceIncluded | boolean   | Indicates whether locker maintenance is included in the price. |
+
+### c. Assignment
+
+| Field             | Data Type | Description                                   |
+| ----------------- | --------- | --------------------------------------------- |
+| assignmentFeeFree | boolean   | Indicates whether there is an assignment fee. |
+| assignmentFee     | integer   | The assignment fee for the building.          |
+
+### d. Metering
+
+| Field            | Data Type | Description                                             |
+| ---------------- | --------- | ------------------------------------------------------- |
+| metering         | string    | The metering information of the building.               |
+| meteringIncluded | boolean   | Indicates whether metering is included in the building. |
+
+### e. Incentives
+
+| Field              | Data Type | Description                                         |
+| ------------------ | --------- | --------------------------------------------------- |
+| incentives         | array     | An array of incentives offered with the building.   |
+| numberOfIncentives | integer   | The number of incentives offered with the building. |
+
+### f. Storage
+
+| Field               | Data Type | Description                                                                |
+| ------------------- | --------- | -------------------------------------------------------------------------- |
+| storageRestriction  | string    | The storage restriction of the building.                                   |
+| storageCost         | integer   | The cost of storage, if applicable.                                        |
+| storageCostIncluded | boolean   | Indicates whether storage cost is included in the pricing of the building. |
+
+### g. Development Levies
+
+| Field                     | Data Type | Description                                                              |
+| ------------------------- | --------- | ------------------------------------------------------------------------ |
+| developmentLevies         | string    | The development levies associated with the building.                     |
+| developmentLeviesIncluded | boolean   | Indicates whether development levies are included in the building price. |
+
+### h. Maintenance
+
+| Field                | Data Type | Description                                                 |
+| -------------------- | --------- | ----------------------------------------------------------- |
+| ccOrMaintFee         | number    | The CC or maintenance fee for the building.                 |
+| ccOrMaintFeeIncluded | boolean   | Whether the CC or maintenance fee is included in the price. |
+
+## 7\. Floorplans
+
+We offer two types of floorplans: "**plan**" and "**unit**".
+
+1. A "**plan**" refers to a range of units in the building that share the same floorplan. The listed price will indicate "starting from" as there may be variations in the price based on the specific unit.
+2. A "**unit**" refers to a specific, individual unit in the building. The listed price for a "unit" is the exact price for that particular unit.
+<Frame>
+  <img src="/images/reference/cc2971e-Asset_2300x.png"/>
+</Frame>
+> ## <Icon icon="book" />
+>
+> Info:
+>
+> The response field `planCategory` will tell you if its a plan or unit.
+
+| Field                        | Data Type        | Description                                                      |
+| ---------------------------- | ---------------- | ---------------------------------------------------------------- |
+| numberOfFloorPlans           | integer          | The number of available floor plans for the building.            |
+| numberOfUnits                | integer          | The number of available units for the building.                  |
+| floorPlans                   | array of objects | An array of objects representing the floor plans.                |
+| floorPlans.exposure          | array            | An array of the exposures of the floor plans.                    |
+| floorPlans.floorPlanType     | array of strings | The type of floor plan.                                          |
+| floorPlans.image             | object           | An object representing the image of the floor plan.              |
+| floorPlans.image.name        | string           | The name of the image of the floor plan.                         |
+| floorPlans.image.url         | string           | The URL of the image of the floor plan.                          |
+| floorPlans.numberOfBathrooms | integer          | The number of bathrooms in the floor plan.                       |
+| floorPlans.numberOfBedrooms  | integer          | The number of bedrooms in the floor plan.                        |
+| floorPlans.planCategory      | string           | The category of the floor plan.                                  |
+| floorPlans.squareFeet        | string           | The square footage of the floor plan.                            |
+| floorPlans.status            | string           | The status of the floor plan.                                    |
+| floorPlans.startPrice        | string           | The starting price of the floor plan.                            |
+| floorPlans.contactForPricing | boolean          | Indicates if pricing information of the floor plans is available |
+
+## 8\. Payment Structures
+
+<Frame>
+  <img src="/images/reference/a5a85a9-Deposit_Structureflow.png"/>
+</Frame>
+
+| Field                               | Data Type        | Description                                                                               |
+| ----------------------------------- | ---------------- | ----------------------------------------------------------------------------------------- |
+| paymentStructures                   | array of objects | An array of objects containing information about the payment structures for the building. |
+| paymentStructures.milestones        | array of objects | An array of objects representing the milestones associated with the payment structures.   |
+| paymentStructures.milestones.amount | integer          | The amount of the milestone associated with the payment structure.                        |
+| paymentStructures.milestones.prefix | string           | The prefix associated with the milestone.                                                 |
+| paymentStructures.milestones.suffix | string           | The suffix associated with the milestone.                                                 |
+| paymentStructures.milestones.text   | string           | The text is associated with the milestone.                                                |
+| paymentStructures.milestones.type   | string           | The type of milestones.                                                                   |
+| paymentStructures.totalDeposit      | integer          | The total deposit required for a building.                                                |
+| paymentStructures.type              | string           | The type of payment structure.                                                            |
+
+## 9\. Other Details
+
+| Field       | Data Type | Description                                                |
+| ----------- | --------- | ---------------------------------------------------------- |
+| moveInReady | boolean   | Indicates whether the property is ready for occupation.    |
+| isFeatured  | boolean   | Indicated whether the property is featured or highlighted. |
+| total       | integer   | The total number of objects.                               |
+| page        | integer   | The current page number of the given result.               |
+| pages       | integer   | The total number of pages.                                 |
+| perPage     | integer   | The number of results to fetch per page.                   |
+| message     | string    | A message associated with the response.                    |

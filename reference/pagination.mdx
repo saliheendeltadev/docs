@@ -1,0 +1,331 @@
+---
+title: "Pagination"
+icon: rectangle-list
+description: Since objects can be big enough, with a size as large as 10KBs per object, results can be paginated to avoid pulling all data at once, improving latency.
+---
+
+## page
+
+**_Integer, Optional, Default: 0_**
+
+Specify the page to retrieve.
+You must use this setting if you wish to retrieve specific pages.
+
+**Notes:**
+
+* Page-numbering is based on the value of `perPage`. If `perPage`\=20, then `page=0` will display the first 20 results, and `page=2` will display the hits from 41 to 60.
+* Page numbers are zero-based. Therefore, to retrieve the tenth page, you need to set `page=9`.
+* You can see the number of available pages in the value of `pages` in the JSON response to the search query.
+* If you send a request for a page that doesn’t exist or is out of range when the page is greater than or equal to `pages`, Buildify doesn’t respond with an error. Instead, the response will display '0'.
+
+## perPage
+
+**_Integer, Optional, Default: 20_**
+
+Sets the number of results per page.
+
+1000 is the maximum number of results you can have per page.
+
+**Sample Paginated Query**
+<Tabs>
+  <Tab title="Request">
+```JSON
+
+{
+  "search": "Residences",
+	"page" : 2,
+	"perPage" : 2
+}
+```
+  </Tab>
+  <Tab title="Response">
+```JSON
+
+{
+  "results": [
+    {
+      "virtualShowing": "",
+      "_geoloc": {
+        "lat": 43.712229620096,
+        "lng": -79.39975460835134
+      },
+      "firstOccupancyDate": "2022-05-11T04:00:00.000Z",
+      "numberOfFloors": "14",
+      "paymentStructures": [],
+      "marketers": [
+        "Marketers/aUQcN1q8TvvjD3taC3OA"
+      ],
+      "status": "",
+      "floorPlans": [
+        {
+          "status": "Available",
+          "numberOfBathrooms": 1,
+          "numberOfBedrooms": 1,
+          "image": {
+            "name": "Photo",
+            "url": ""
+          },
+          "exposure": "North",
+          "units": [
+            {
+              "floor": "5",
+              "description": "",
+              "unitNumber": "01",
+              "status": "Available",
+              "price": 500000
+            },
+            {
+              "floor": "6",
+              "unitNumber": "203",
+              "price": 600000,
+              "description": "",
+              "status": "Sold"
+            }
+          ],
+          "name": "508",
+          "squareFeet": 480
+        },
+        {
+          "numberOfBedrooms": 1,
+          "exposure": "North",
+          "image": {
+            "url": "",
+            "name": "Photo"
+          },
+          "status": "Sold Out",
+          "squareFeet": 34,
+          "name": "test",
+          "units": [
+            {
+              "unitNumber": "12",
+              "floor": "3",
+              "description": "",
+              "price": 50000,
+              "status": ""
+            }
+          ]
+        },
+        {
+          "status": "Available",
+          "exposure": [
+            "North"
+          ],
+          "squareFeet": 343,
+          "numberOfBedrooms": 3,
+          "units": [],
+          "numberOfBathrooms": 3,
+          "image": {
+            "name": "Photo",
+            "url": ""
+          },
+          "name": "34223"
+        }
+      ],
+      "summary": "A STAR IS REBORN\n\nDirected by the award-winning team at Hariri Pontarini Architects and Turner Fleischer Architects, the famed Capitol Theatre has been transformed into a stunning 14-storey residence.\n\nComplete with interiors designed by Studio Munge, the stage is set to welcome a new era of inspiration to Toronto’s Midtown Village. ?From its 1914 debut to its last curtain call in 1998, the legend now known as The Capitol has been an icon of Toronto’s entertainment scene—treating three generations of theatergoers to eight decades of stage and screen gems.\n\nThe sumptuous 1,300-seat house, originally designed by John MacNee Jeffrey, was a decadent night out. Now reinvented as a grand new residence, it’s ready for a new era of memorable nights in.\n",
+      "architects": [],
+      "name": "The Capitol Residences",
+      "salesStarted": "2022-05-10T04:00:00.000Z",
+      "neighbourhood": [
+        "Sherwood Park"
+      ],
+      "type": [
+        ""
+      ],
+      "numberOfPayments": 0,
+      "streetNumber": 2500,
+      "updatedAt": "2022-05-14T21:36:11.142Z",
+      "postalCode": "555555",
+      "parkingCost": 99000,
+      "brokerages": [],
+      "municipalities": [
+        "C08"
+      ],
+      "depositAmount1": "",
+      "logo": {
+        "url": "",
+        "name": "logo"
+      },
+      "cityOrDistrict": "",
+      "salesCompanies": [],
+      "owners": [
+        "Owners/RhlTKtN8hAxQeSBWV8u0"
+      ],
+      "estimatedCompletionDate": "2022-05-10T04:00:00.000Z",
+      "long": "-79.39975460835134",
+      "constructionStatus": "",
+      "marketingCompanies": [],
+      "photos": [
+        {
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/3fcd3852-6f79-456b-b11d-644ff035cc40.png",
+          "name": "Photo",
+          "tags": [
+            "Exterior"
+          ],
+          "confirm": true
+        },
+        {
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/fdeecbf8-c588-4a3c-bc5d-aa9b047bd4b6.png",
+          "name": "Photo",
+          "tags": [],
+          "confirm": true
+        },
+        {
+          "name": "Photo",
+          "confirm": true,
+          "tags": [],
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/6970b73e-14db-4d02-96e7-504d4e443dbb.png"
+        },
+        {
+          "name": "Photo",
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/c35720af-ec41-4011-a2a1-45ffeaf70d9d.png",
+          "confirm": true,
+          "tags": []
+        },
+        {
+          "tags": [],
+          "name": "Photo",
+          "url": "https://storage.googleapis.com/precon-app.appspot.com/eec44a65-d2b2-4cb3-b8b3-32926d95171d.png",
+          "confirm": true
+        }
+      ],
+      "communities": [],
+      "ccOrMaintFee": 0.85,
+      "streetName": "Yonge Street",
+      "lat": "43.712229620096",
+      "state": "",
+      "sellingStatus": "",
+      "numberOfIncentives": 1,
+      "completionDate": "2022-05-18T04:00:00.000Z",
+      "coverPhoto": {
+        "url": "",
+        "name": "cover"
+      },
+      "incentives": [
+        {
+          "description": "-FREE ASSIGNMENT* (Regular Assignment Fee of $10,000)\n\n-PERMISSION TO LEASE DURING OCCUPANCY*\n\n-CAPPED DEVELOPMENT CHARGES\n• $12,500 PLUS HST FOR 1 BEDROOM+DEN AND SMALLER\n• $18,000 PLUS HST FOR 2 BEDROOM AND LARGER\n\nEXTENDED DEPOSIT STRUCTURE\n$10,000 on signing\nBalance to 5% in 30 days\n5% in 90 days\n5% in 500 days\n5% on Occupancy\n\n*Incentives current as of May 2, 2022",
+          "date": "2022-05-10"
+        }
+      ],
+      "country": "",
+      "amenities": [
+        "Pet-Friendly",
+        "Security Access",
+        "24 Hour Fitness Center",
+        "Community Lounge",
+        "Bike Parking",
+        "Sun Deck",
+        "Keyless Electronic Unit Entry"
+      ],
+      "interiorDesigners": [],
+      "numberOfFloorPlans": 3,
+      "agents": [],
+      "createdAt": "2022-05-10T03:45:09.077Z",
+      "builders": [
+        "Builders/P1VyhUGpSyRvopl8JJU0",
+        "Builders/kaPZtEl1MLGSwaik1e9d"
+      ],
+      "storageCost": 6000,
+      "numberOfUnits": "",
+      "path": "Listings/P42YGZ",
+      "lastmodified": 1660853680456,
+      "objectID": "P42YGZ"
+    },
+    {
+      "salesStartedTBD": false,
+      "numberOfUnits": "",
+      "hasSecondPaymentStructure": false,
+      "builders": [],
+      "brokerages": [],
+      "lat": "43.712229620096",
+      "amenities": [
+        "Pet-Friendly",
+        "Security Access",
+        "24 Hour Fitness Center",
+        "Community Lounge",
+        "Bike Parking",
+        "Sun Deck",
+        "Keyless Electronic Unit Entry",
+        "Wi-Fi",
+        "Nest Thermostat"
+      ],
+      "owners": [],
+      "ccOrMaintFee": 0.85,
+      "streetName": "Yonge Street",
+      "logo": {
+        "name": "logo",
+        "url": ""
+      },
+      "depositAmount1": "",
+      "long": "-79.39975460835134",
+      "state": "Ontario",
+      "estimatedCompletionDate": "2022-05-10T04:00:00.000Z",
+      "municipalities": [
+        "C08"
+      ],
+      "parkingCost": 99000,
+      "streetNumber": 2500,
+      "storageCost": 6000,
+      "floorPlans": [],
+      "status": "",
+      "type": [
+        "Condo"
+      ],
+      "name": "The Capitol Residences",
+      "paymentStructures": [],
+      "paymentTitle1": "",
+      "coverPhoto": {
+        "name": "cover",
+        "url": "https://storage.googleapis.com/precon-app.appspot.com/74752417-9c15-4bbc-ad58-f4f1dde49090.png"
+      },
+      "incentives": [
+        {
+          "date": "2022-05-10",
+          "description": "-FREE ASSIGNMENT* (Regular Assignment Fee of $10,000)\n\n-PERMISSION TO LEASE DURING OCCUPANCY*\n\n-CAPPED DEVELOPMENT CHARGES\n• $12,500 PLUS HST FOR 1 BEDROOM+DEN AND SMALLER\n• $18,000 PLUS HST FOR 2 BEDROOM AND LARGER\n\nEXTENDED DEPOSIT STRUCTURE\n$10,000 on signing\nBalance to 5% in 30 days\n5% in 90 days\n5% in 500 days\n5% on Occupancy\n\n*Incentives current as of May 2, 2022"
+        }
+      ],
+      "estimatedCompletionDateTBD": false,
+      "numberOfIncentives": 1,
+      "createdAt": "2022-05-10T02:35:55.437Z",
+      "salesCompanies": [
+        "SalesCompanies/ucfIy3hrNXelVsDavlNR"
+      ],
+      "numberOfFloors": "14",
+      "architects": [],
+      "cityOrDistrict": "Toronto",
+      "interiorDesigners": [],
+      "communities": [],
+      "country": "Canada",
+      "numberOfPayments": 0,
+      "agents": [],
+      "virtualShowing": "",
+      "photos": [],
+      "firstOccupancyDateTBD": false,
+      "numberOfFloorPlans": 0,
+      "neighbourhood": [
+        "Sherwood Park"
+      ],
+      "_geoloc": {
+        "lat": 43.712229620096,
+        "lng": -79.39975460835134
+      },
+      "constructionStatus": "Pre-construction",
+      "constructionStartedTBD": false,
+      "completionDateTBD": false,
+      "summary": "A STAR IS REBORN\n\nDirected by the award-winning team at Hariri Pontarini Architects and Turner Fleischer Architects, the famed Capitol Theatre has been transformed into a stunning 14-storey residence.\n\nComplete with interiors designed by Studio Munge, the stage is set to welcome a new era of inspiration to Toronto’s Midtown Village. ?From its 1914 debut to its last curtain call in 1998, the legend now known as The Capitol has been an icon of Toronto’s entertainment scene—treating three generations of theatergoers to eight decades of stage and screen gems.\n\nThe sumptuous 1,300-seat house, originally designed by John MacNee Jeffrey, was a decadent night out. Now reinvented as a grand new residence, it’s ready for a new era of memorable nights in.\n",
+      "marketingCompanies": [],
+      "updatedAt": "2022-05-24T12:22:50.172Z",
+      "postalCode": "555555",
+      "path": "Listings/IH1F9I",
+      "lastmodified": 1660853680456,
+      "objectID": "IH1F9I"
+    }
+  ],
+  "total": 51,
+  "page": 2,
+  "pages": 26,
+  "perPage": 2
+}
+```
+  </Tab>
+
+</Tabs>

@@ -1,0 +1,32 @@
+---
+icon: key
+title: "Authentication"
+description: "Authenticate yourself before using Buildify API."
+---
+Authentication enables you to manage all aspects of user identity, such as accessing the API endpoints.
+Buildify employs basic authentication using the **API Key**.
+
+All API requests must be made over HTTPS, and API requests without authentication will fail.
+
+#### API Key
+
+Authentication to the API is performed via HTTP Basic Auth. To authenticate with Buildify API endpoints, you must provide the API Key in the header, as shown below.
+
+```Bash Authentication Header
+
+`x-api-key: <Your_API_Key>'
+```
+
+For example, when you want to search listings, you will use the `GET - Search Listings` endpoint. In this scenario, you can send an API request by adding your API Key in the Authentication header to retrieve the listings information.
+
+```Bash Search Listings Sample
+
+     curl --request GET \
+          --url https://api.getbuildify.com/v1/search_listings \
+          --header 'x-api-key: YOUR_API_KEY' \
+          --header 'accept: application/json'
+```
+
+> ## <Icon icon="road-barrier" />  Alert!
+>
+> Your API keys carry many concessions, so keep them safe! Do not share your secret API keys on publicly accessible sites.

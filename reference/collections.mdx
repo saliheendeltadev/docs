@@ -1,0 +1,28 @@
+---
+title: "Collections"
+icon: lightbulb
+description: "Additional parameters for Profiles endpoints."
+---
+
+In addition to the query parameters we had for listing endpoints, the profiles endpoint has one additional parameter called **collection**.
+
+Every listing comprises different builders, marketers, interiorDesigner, and many more. These can have a huge blob of data by themselves. To manage data efficiently, Buildify manages certain objects into different collections and references them within the listing object. Learn more about referencing [here](/reference/referrencing)
+
+The `collection` parameter helps you search for or retrieve your profiles from a specific collection.
+
+Buildify supports the following collections:
+
+| Collection Name                                   | Referred As        |
+| ------------------------------------------------- | ------------------ |
+| [Architects](/reference/architect)                | architects         |
+| [Builders](/reference/builder)                    | builders           |
+| [InteriorDesigners](/reference/interior-designer) | interiorDesigners  |
+| [Marketers](/reference/marketer)                  | marketingCompanies |
+| [SalesCentres](https://buildify.readme.io/reference/sales-centre)           | salesCentres       |
+| [SalesCompanies](/reference/sales-company)        | salesCompanies     |
+
+> ## <Icon icon="road-barrier" />
+>
+> Attention! Case Sensitive Collection Names.
+>
+> **Collection Names** and **Referred As** values are case-sensitive, so make sure you use correct cases all-time in your API calls.
