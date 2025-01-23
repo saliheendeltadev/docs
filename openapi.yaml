@@ -13518,6 +13518,9 @@ paths:
                                 type: array
                                 items:
                                   type: string
+                              id:
+                                type: string
+                                example: '32c908a2-b785-43ef-b4f8-59f816f06532'
                               floorPlanType:
                                 type: array
                                 items:
