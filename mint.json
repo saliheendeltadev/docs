@@ -33,12 +33,12 @@
     {
       "name": "Coverage",
       "icon": "globe",
-      "url": "https://www.getbuildify.com/worldwide"
+      "url": "https://www.getbuildify.com/coverage"
     },
     {
-      "name": "Blog",
+      "name": "Helpdesk",
       "icon": "newspaper",
-      "url": "https://www.getbuildify.com/blog"
+      "url": "https://intercom.help/buildify/en/collections/11064049-general"
     }
   ],
   "tabs": [
