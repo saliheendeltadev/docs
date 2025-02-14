@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Builidfy",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/newlogo.svg",
+    "light": "/logo/newlogo.svg"
   },
   "theme": "venus",
   "favicon": "/favicon.png",
