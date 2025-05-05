@@ -3,7 +3,7 @@ info:
   title: Buildify API
   version: '1.0'
 servers:
-  - url: https://api.getbuildify.com
+- url: https://api.getbuildify.com
 components:
   securitySchemes:
     sec0:
@@ -11,7 +11,7 @@ components:
       in: header
       name: x-api-key
 security:
-  - sec0: []
+- sec0: []
 paths:
   /{apiVersion}/{apiProvince}/listing:
     get:
@@ -19,48 +19,49 @@ paths:
       description: 👨🏻‍💻 Retrieve detailed information of a specific listing.
       operationId: get-a-listing
       parameters:
-        - name: id
-          in: query
-          description: The specific id/objectId of the listing.
-          required: true
-          schema:
-            type: string
-        - name: retrieveAttributes
-          in: query
-          description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
-          schema:
-            type: string
-        - name: referrences
-          in: query
-          description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
-          schema:
-            type: string
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: id
+        in: query
+        description: The specific id/objectId of the listing.
+        required: true
+        schema:
+          type: string
+      - name: retrieveAttributes
+        in: query
+        description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
+        schema:
+          type: string
+      - name: referrences
+        in: query
+        description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
+        schema:
+          type: string
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -211,97 +212,98 @@ paths:
       description: 🔎 Search for the most up-to-date listings information.
       operationId: search-listings
       parameters:
-        - name: search
-          in: query
-          description: The given search string is searched from listing's name, summary, amenities, cityOrDistrict, streetName, country, neighbourhood. **[See more info](https://buildify.readme.io/reference/searching-params)**.
-          schema:
-            type: string
-        - name: page
-          in: query
-          description: Fetch the given page of the results, starts from 0. **[See more info](https://buildify.readme.io/reference/pagination)**.
-          schema:
-            type: string
-        - name: perPage
-          in: query
-          description: Number of results to be fetched per page.
-          schema:
-            type: string
-        - name: facets
-          in: query
-          description: Facets to fetch, possible values can be amenities, builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/faceting)**.
-          schema:
-            type: string
-        - name: filterQuery
-          in: query
-          description: Query to filter the listings. This parameter will work if the `retrieveAttributes` is also filled in. **[See more info](https://buildify.readme.io/reference/filtering)**.
-          schema:
-            type: string
-        - name: retrieveAttributes
-          in: query
-          description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
-          schema:
-            type: string
-        - name: highlightResults
-          in: query
-          description: Highlight the strings matching the search.
-          schema:
-            type: boolean
-        - name: nearby
-          in: query
-          description: Fetch listings nearby to the given coordinates. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
-          schema:
-            type: string
-        - name: radius
-          in: query
-          description: Listings under the given radius. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
-          schema:
-            type: integer
-            format: int32
-        - name: referrences
-          in: query
-          description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
-          schema:
-            type: string
-        - name: sortBy
-          in: query
-          description: Sort by either name, price or sellingStatusUpdateTimestamp
-          schema:
-            type: string
-        - name: sortOrder
-          in: query
-          description: asc for ascending, dsc for descending
-          schema:
-            type: string
-        - name: searchWithin
-          in: query
-          description: Comma separated list of values to be used for searching, by default all the values are used. Only acceptable values are from name, summary, amenities, cityOrDistrict, streetName, country, neighbourhood, fullAddress, listingId
-          schema:
-            type: string
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-          required: true
+      - name: search
+        in: query
+        description: The given search string is searched from listing's name, summary, amenities, cityOrDistrict, streetName, country, neighbourhood. **[See more info](https://buildify.readme.io/reference/searching-params)**.
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Fetch the given page of the results, starts from 0. **[See more info](https://buildify.readme.io/reference/pagination)**.
+        schema:
+          type: string
+      - name: perPage
+        in: query
+        description: Number of results to be fetched per page.
+        schema:
+          type: string
+      - name: facets
+        in: query
+        description: Facets to fetch, possible values can be amenities, builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/faceting)**.
+        schema:
+          type: string
+      - name: filterQuery
+        in: query
+        description: Query to filter the listings. This parameter will work if the `retrieveAttributes` is also filled in. **[See more info](https://buildify.readme.io/reference/filtering)**.
+        schema:
+          type: string
+      - name: retrieveAttributes
+        in: query
+        description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
+        schema:
+          type: string
+      - name: highlightResults
+        in: query
+        description: Highlight the strings matching the search.
+        schema:
+          type: boolean
+      - name: nearby
+        in: query
+        description: Fetch listings nearby to the given coordinates. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
+        schema:
+          type: string
+      - name: radius
+        in: query
+        description: Listings under the given radius. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
+        schema:
+          type: integer
+          format: int32
+      - name: referrences
+        in: query
+        description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
+        schema:
+          type: string
+      - name: sortBy
+        in: query
+        description: Sort by either name, price or sellingStatusUpdateTimestamp
+        schema:
+          type: string
+      - name: sortOrder
+        in: query
+        description: asc for ascending, dsc for descending
+        schema:
+          type: string
+      - name: searchWithin
+        in: query
+        description: Comma separated list of values to be used for searching, by default all the values are used. Only acceptable values are from name, summary, amenities, cityOrDistrict, streetName, country, neighbourhood, fullAddress, listingId
+        schema:
+          type: string
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'all'
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+        required: true
       responses:
         '200':
           description: '200'
@@ -13919,48 +13921,48 @@ paths:
       description: 📑 Fetch multiple listings available without any hassle.
       operationId: get-multiple-listings
       parameters:
-        - name: ids
-          in: query
-          description: Listing ids to fetch, should be comma separated.
-          required: true
-          schema:
-            type: string
-        - name: retrieveAttributes
-          in: query
-          description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
-          schema:
-            type: string
-        - name: referrences
-          in: query
-          description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
-          schema:
-            type: string
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: ids
+        in: query
+        description: Listing ids to fetch, should be comma separated.
+        required: true
+        schema:
+          type: string
+      - name: retrieveAttributes
+        in: query
+        description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
+        schema:
+          type: string
+      - name: referrences
+        in: query
+        description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
+        schema:
+          type: string
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -15702,25 +15704,25 @@ paths:
                     }
               schema:
                 oneOf:
-                  - type: object
-                    properties:
-                      results:
-                        type: array
-                        items:
-                            type: string
-                      message:
+                - type: object
+                  properties:
+                    results:
+                      type: array
+                      items:
                         type: string
-                        example: 'ObjectID SEOT2 does not exist. '
-                  - title: OK - Incorrect ID Entered
-                    type: object
-                    properties:
-                      results:
-                        type: array
-                        items:
-                            type: string
-                      message:
+                    message:
+                      type: string
+                      example: 'ObjectID SEOT2 does not exist. '
+                - title: OK - Incorrect ID Entered
+                  type: object
+                  properties:
+                    results:
+                      type: array
+                      items:
                         type: string
-                        example: 'ObjectID Q1U4Y does not exist. '
+                    message:
+                      type: string
+                      example: 'ObjectID Q1U4Y does not exist. '
         '403':
           description: '403'
           content:
@@ -15768,43 +15770,43 @@ paths:
       description: ✅ Get profile information for a specific listing.
       operationId: get-profiles-of-a-listing
       parameters:
-        - name: id
-          in: query
-          description: Listing id for which profiles needs to fetched.
-          required: true
-          schema:
-            type: string
-        - name: referrences
-          in: query
-          description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
-          schema:
-            type: string
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: id
+        in: query
+        description: Listing id for which profiles needs to fetched.
+        required: true
+        schema:
+          type: string
+      - name: referrences
+        in: query
+        description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
+        schema:
+          type: string
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -15930,59 +15932,59 @@ paths:
       description: 📌 Retrieve a list of similar properties based on the specified attributes.
       operationId: get-similar-listings
       parameters:
-        - name: id
-          in: query
-          description: Listing id for which similar listings needs to be fetched.
-          required: true
-          schema:
-            type: string
-        - name: retrieveAttributes
-          in: query
-          description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
-          schema:
-            type: string
-        - name: referrences
-          in: query
-          description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
-          schema:
-            type: string
-        - name: minScore
-          in: query
-          description: Listings minimum similarity score.
-          schema:
-            type: integer
-            format: int32
-        - name: maxRecommendations
-          in: query
-          description: Maximum number of recommendations/results.
-          schema:
-            type: integer
-            format: int32
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: id
+        in: query
+        description: Listing id for which similar listings needs to be fetched.
+        required: true
+        schema:
+          type: string
+      - name: retrieveAttributes
+        in: query
+        description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
+        schema:
+          type: string
+      - name: referrences
+        in: query
+        description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
+        schema:
+          type: string
+      - name: minScore
+        in: query
+        description: Listings minimum similarity score.
+        schema:
+          type: integer
+          format: int32
+      - name: maxRecommendations
+        in: query
+        description: Maximum number of recommendations/results.
+        schema:
+          type: integer
+          format: int32
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -19398,51 +19400,51 @@ paths:
       description: ➡️ Get a count of specific available attributes based on your search.
       operationId: get-facets-of-listing
       parameters:
-        - name: facets
-          in: query
-          description: Facets to fetch, possible values can be amenities, builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/faceting)**.
-          required: true
-          schema:
-            type: string
-        - name: format
-          in: query
-          description: The listing format to be displayed.
-          schema:
-            type: string
-            enum:
-              - object
-              - list
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
-        - name: filterQuery
-          in: query
-          description: Query to filter the listings. **[See more info](https://buildify.readme.io/reference/filtering)**.
-          schema:
-            type: string
+      - name: facets
+        in: query
+        description: Facets to fetch, possible values can be amenities, builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/faceting)**.
+        required: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: The listing format to be displayed.
+        schema:
+          type: string
+          enum:
+          - object
+          - list
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
+      - name: filterQuery
+        in: query
+        description: Query to filter the listings. **[See more info](https://buildify.readme.io/reference/filtering)**.
+        schema:
+          type: string
       responses:
         '200':
           description: '200'
@@ -20008,53 +20010,53 @@ paths:
       description: 📉 Retrieve a list of the most popular and sought-after listings.
       operationId: get-trending-listings
       parameters:
-        - name: retrieveAttributes
-          in: query
-          description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
-          schema:
-            type: string
-        - name: referrences
-          in: query
-          description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
-          schema:
-            type: string
-        - name: minScore
-          in: query
-          description: Listings minimum score (from 0 to 100), 100 being most trending.
-          schema:
-            type: integer
-            format: int32
-        - name: maxRecommendations
-          in: query
-          description: Maximum number of recommendations/results. The maximum value is 30.
-          schema:
-            type: integer
-            format: int32
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: retrieveAttributes
+        in: query
+        description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
+        schema:
+          type: string
+      - name: referrences
+        in: query
+        description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
+        schema:
+          type: string
+      - name: minScore
+        in: query
+        description: Listings minimum score (from 0 to 100), 100 being most trending.
+        schema:
+          type: integer
+          format: int32
+      - name: maxRecommendations
+        in: query
+        description: Maximum number of recommendations/results. The maximum value is 30.
+        schema:
+          type: integer
+          format: int32
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -25674,94 +25676,94 @@ paths:
       description: 🔎 Search for profile details.
       operationId: search-profiles
       parameters:
-        - name: collection
-          in: query
-          description: Collection name of the profile to search from. **[See more info](https://buildify.readme.io/reference/collections)** .
-          required: true
-          schema:
-            type: string
-            enum:
-              - ''
-              - Architects
-              - Builders
-              - InteriorDesigners
-              - Marketers
-              - SalesCentres
-              - SalesCompanies
-        - name: search
-          in: query
-          description: The given search string is searched from listing's name, summary, amenities, cityOrDistrict, streetName, country, neighbourhood. **[See more info](https://buildify.readme.io/reference/searching-params)**.
-          schema:
-            type: string
-        - name: page
-          in: query
-          description: Fetch the given page of the results, starts from 0. **[See more info](https://buildify.readme.io/reference/pagination)**.
-          schema:
-            type: integer
-            format: int32
-        - name: perPage
-          in: query
-          description: Number of results per page.
-          schema:
-            type: integer
-            format: int32
-        - name: facets
-          in: query
-          description: Facets to fetch, possible values can be amenities, builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/faceting)**.
-          schema:
-            type: string
-        - name: filterQuery
-          in: query
-          description: Query to filter the listings. **[See more info](https://buildify.readme.io/reference/filtering)**.
-          schema:
-            type: string
-        - name: retrieveAttributes
-          in: query
-          description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
-          schema:
-            type: string
-        - name: referrences
-          in: query
-          description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
-          schema:
-            type: string
-        - name: sortBy
-          in: query
-          description: Sort by name
-          schema:
-            type: string
-            default: name
-        - name: sortOrder
-          in: query
-          description: asc for ascending, dsc for descending
-          schema:
-            type: string
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: collection
+        in: query
+        description: Collection name of the profile to search from. **[See more info](https://buildify.readme.io/reference/collections)** .
+        required: true
+        schema:
+          type: string
+          enum:
+          - ''
+          - Architects
+          - Builders
+          - InteriorDesigners
+          - Marketers
+          - SalesCentres
+          - SalesCompanies
+      - name: search
+        in: query
+        description: The given search string is searched from listing's name, summary, amenities, cityOrDistrict, streetName, country, neighbourhood. **[See more info](https://buildify.readme.io/reference/searching-params)**.
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Fetch the given page of the results, starts from 0. **[See more info](https://buildify.readme.io/reference/pagination)**.
+        schema:
+          type: integer
+          format: int32
+      - name: perPage
+        in: query
+        description: Number of results per page.
+        schema:
+          type: integer
+          format: int32
+      - name: facets
+        in: query
+        description: Facets to fetch, possible values can be amenities, builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/faceting)**.
+        schema:
+          type: string
+      - name: filterQuery
+        in: query
+        description: Query to filter the listings. **[See more info](https://buildify.readme.io/reference/filtering)**.
+        schema:
+          type: string
+      - name: retrieveAttributes
+        in: query
+        description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
+        schema:
+          type: string
+      - name: referrences
+        in: query
+        description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
+        schema:
+          type: string
+      - name: sortBy
+        in: query
+        description: Sort by name
+        schema:
+          type: string
+          default: name
+      - name: sortOrder
+        in: query
+        description: asc for ascending, dsc for descending
+        schema:
+          type: string
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -25954,57 +25956,57 @@ paths:
       description: ⬇️ Fetch a profile by ID.
       operationId: get-a-profile
       parameters:
-        - name: id
-          in: query
-          description: Profile ID to fetch.
-          required: true
-          schema:
-            type: string
-        - name: collection
-          in: query
-          description: Collection name of the profile to search from. **[See more info](https://buildify.readme.io/reference/collections)** .
-          required: true
-          schema:
-            type: string
-            enum:
-              - ''
-              - Architects
-              - Builders
-              - InteriorDesigners
-              - Marketers
-              - SalesCentres
-              - SalesCompanies
-        - name: referrences
-          in: query
-          description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
-          schema:
-            type: string
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: id
+        in: query
+        description: Profile ID to fetch.
+        required: true
+        schema:
+          type: string
+      - name: collection
+        in: query
+        description: Collection name of the profile to search from. **[See more info](https://buildify.readme.io/reference/collections)** .
+        required: true
+        schema:
+          type: string
+          enum:
+          - ''
+          - Architects
+          - Builders
+          - InteriorDesigners
+          - Marketers
+          - SalesCentres
+          - SalesCompanies
+      - name: referrences
+        in: query
+        description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
+        schema:
+          type: string
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -26133,43 +26135,43 @@ paths:
       description: 📑 Fetch multiple profiles by product ID and paths.
       operationId: get-multiple-profiles
       parameters:
-        - name: paths
-          in: query
-          description: Paths of profiles. **[See more info](https://buildify.readme.io/reference/paths)**.
-          required: true
-          schema:
-            type: string
-        - name: referrences
-          in: query
-          description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
-          schema:
-            type: string
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: paths
+        in: query
+        description: Paths of profiles. **[See more info](https://buildify.readme.io/reference/paths)**.
+        required: true
+        schema:
+          type: string
+      - name: referrences
+        in: query
+        description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
+        schema:
+          type: string
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -26302,93 +26304,93 @@ paths:
       description: 🔎 Search among the listings which are ready to be moved in.
       operationId: move-in-ready-listings
       parameters:
-        - name: search
-          in: query
-          description: The given search string is searched from listing's name, summary, amenities, cityOrDistrict, streetName, country, neighbourhood. **[See more info](https://buildify.readme.io/reference/searching-params)**.
-          schema:
-            type: string
-        - name: page
-          in: query
-          description: Fetch the given page of the results, starts from 0. **[See more info](https://buildify.readme.io/reference/pagination)**.
-          schema:
-            type: string
-        - name: perPage
-          in: query
-          description: Number of results to be fetched per page.
-          schema:
-            type: string
-        - name: facets
-          in: query
-          description: Facets to fetch, possible values can be amenities, builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/faceting)**.
-          schema:
-            type: string
-        - name: filterQuery
-          in: query
-          description: Query to filter the listings. **[See more info](https://buildify.readme.io/reference/filtering)**.
-          schema:
-            type: string
-        - name: retrieveAttributes
-          in: query
-          description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
-          schema:
-            type: string
-        - name: highlightResults
-          in: query
-          description: Highlight the strings matching the search.
-          schema:
-            type: boolean
-        - name: nearby
-          in: query
-          description: Fetch listings nearby to the given coordinates. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
-          schema:
-            type: string
-        - name: radius
-          in: query
-          description: Listings under the given radius. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
-          schema:
-            type: integer
-            format: int32
-        - name: referrences
-          in: query
-          description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
-          schema:
-            type: string
-        - name: sortBy
-          in: query
-          description: Sort by either name, price or sellingStatusUpdateTimestamp
-          schema:
-            type: string
-        - name: sortOrder
-          in: query
-          description: asc for ascending, dsc for descending
-          schema:
-            type: string
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: search
+        in: query
+        description: The given search string is searched from listing's name, summary, amenities, cityOrDistrict, streetName, country, neighbourhood. **[See more info](https://buildify.readme.io/reference/searching-params)**.
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Fetch the given page of the results, starts from 0. **[See more info](https://buildify.readme.io/reference/pagination)**.
+        schema:
+          type: string
+      - name: perPage
+        in: query
+        description: Number of results to be fetched per page.
+        schema:
+          type: string
+      - name: facets
+        in: query
+        description: Facets to fetch, possible values can be amenities, builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/faceting)**.
+        schema:
+          type: string
+      - name: filterQuery
+        in: query
+        description: Query to filter the listings. **[See more info](https://buildify.readme.io/reference/filtering)**.
+        schema:
+          type: string
+      - name: retrieveAttributes
+        in: query
+        description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
+        schema:
+          type: string
+      - name: highlightResults
+        in: query
+        description: Highlight the strings matching the search.
+        schema:
+          type: boolean
+      - name: nearby
+        in: query
+        description: Fetch listings nearby to the given coordinates. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
+        schema:
+          type: string
+      - name: radius
+        in: query
+        description: Listings under the given radius. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
+        schema:
+          type: integer
+          format: int32
+      - name: referrences
+        in: query
+        description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
+        schema:
+          type: string
+      - name: sortBy
+        in: query
+        description: Sort by either name, price or sellingStatusUpdateTimestamp
+        schema:
+          type: string
+      - name: sortOrder
+        in: query
+        description: asc for ascending, dsc for descending
+        schema:
+          type: string
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -41473,93 +41475,93 @@ paths:
       description: 🔎 Get to know which properties are turning heads.
       operationId: featured-listings
       parameters:
-        - name: search
-          in: query
-          description: The given search string is searched from listing's name, summary, amenities, cityOrDistrict, streetName, country, neighbourhood. **[See more info](https://buildify.readme.io/reference/searching-params)**.
-          schema:
-            type: string
-        - name: page
-          in: query
-          description: Fetch the given page of the results, starts from 0. **[See more info](https://buildify.readme.io/reference/pagination)**.
-          schema:
-            type: string
-        - name: perPage
-          in: query
-          description: Number of results to be fetched per page.
-          schema:
-            type: string
-        - name: facets
-          in: query
-          description: Facets to fetch, possible values can be amenities, builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/faceting)**.
-          schema:
-            type: string
-        - name: filterQuery
-          in: query
-          description: Query to filter the listings. **[See more info](https://buildify.readme.io/reference/filtering)**.
-          schema:
-            type: string
-        - name: retrieveAttributes
-          in: query
-          description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
-          schema:
-            type: string
-        - name: highlightResults
-          in: query
-          description: Highlight the strings matching the search.
-          schema:
-            type: boolean
-        - name: nearby
-          in: query
-          description: Fetch listings nearby to the given coordinates. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
-          schema:
-            type: string
-        - name: radius
-          in: query
-          description: Listings under the given radius. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
-          schema:
-            type: integer
-            format: int32
-        - name: referrences
-          in: query
-          description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
-          schema:
-            type: string
-        - name: sortBy
-          in: query
-          description: Sort by either name, price or sellingStatusUpdateTimestamp
-          schema:
-            type: string
-        - name: sortOrder
-          in: query
-          description: asc for ascending, dsc for descending
-          schema:
-            type: string
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: search
+        in: query
+        description: The given search string is searched from listing's name, summary, amenities, cityOrDistrict, streetName, country, neighbourhood. **[See more info](https://buildify.readme.io/reference/searching-params)**.
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Fetch the given page of the results, starts from 0. **[See more info](https://buildify.readme.io/reference/pagination)**.
+        schema:
+          type: string
+      - name: perPage
+        in: query
+        description: Number of results to be fetched per page.
+        schema:
+          type: string
+      - name: facets
+        in: query
+        description: Facets to fetch, possible values can be amenities, builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/faceting)**.
+        schema:
+          type: string
+      - name: filterQuery
+        in: query
+        description: Query to filter the listings. **[See more info](https://buildify.readme.io/reference/filtering)**.
+        schema:
+          type: string
+      - name: retrieveAttributes
+        in: query
+        description: 'Attributes to retrieve. For example: name, summary, builders, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/retrievable-attributes)**.'
+        schema:
+          type: string
+      - name: highlightResults
+        in: query
+        description: Highlight the strings matching the search.
+        schema:
+          type: boolean
+      - name: nearby
+        in: query
+        description: Fetch listings nearby to the given coordinates. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
+        schema:
+          type: string
+      - name: radius
+        in: query
+        description: Listings under the given radius. **[See more info](https://buildify.readme.io/reference/nearby-parameters)**.
+        schema:
+          type: integer
+          format: int32
+      - name: referrences
+        in: query
+        description: 'Fields to attach referrences. For example: builders, marketers, etc. It should be comma separated. **[See more info](https://buildify.readme.io/reference/referrencing)**.'
+        schema:
+          type: string
+      - name: sortBy
+        in: query
+        description: Sort by either name, price or sellingStatusUpdateTimestamp
+        schema:
+          type: string
+      - name: sortOrder
+        in: query
+        description: asc for ascending, dsc for descending
+        schema:
+          type: string
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -41588,41 +41590,41 @@ paths:
       description: ''
       operationId: create-a-subscription
       parameters:
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-                - env
-                - targetUrl
-                - event
+              - env
+              - targetUrl
+              - event
               properties:
                 env:
                   type: string
@@ -41661,32 +41663,32 @@ paths:
       description: ''
       operationId: list-subscriptions
       parameters:
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -41714,32 +41716,32 @@ paths:
       description: ''
       operationId: delete-a-subscription
       parameters:
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       responses:
         '200':
           description: '200'
@@ -41768,40 +41770,40 @@ paths:
       description: ''
       operationId: trigger-profile-webhook
       parameters:
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-                - id
-                - collection
+              - id
+              - collection
               properties:
                 id:
                   type: string
@@ -41837,39 +41839,39 @@ paths:
       description: ''
       operationId: trigger-listing-webhook
       parameters:
-        - name: apiVersion
-          in: path
-          schema:
-            type: string
-            enum:
-              - v1-sandbox
-              - v1-lite
-              - v1
-          required: true
-        - name: apiProvince
-          in: path
-          schema:
-            type: string
-            enum:
-              - 'on'
-              - bc
-              - ab
-              - mb
-              - nb
-              - nl
-              - ns
-              - pe
-              - qc
-              - sk
-            default: 'on'
-          required: true
+      - name: apiVersion
+        in: path
+        schema:
+          type: string
+          enum:
+          - v1-sandbox
+          - v1-lite
+          - v1
+        required: true
+      - name: apiProvince
+        in: path
+        schema:
+          type: string
+          enum:
+          - 'on'
+          - bc
+          - ab
+          - mb
+          - nb
+          - nl
+          - ns
+          - pe
+          - qc
+          - sk
+          default: 'on'
+        required: true
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-                - id
+              - id
               properties:
                 id:
                   type: string
