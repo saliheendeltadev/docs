@@ -49,7 +49,7 @@ paths:
         schema:
           type: string
           enum:
-
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -13951,6 +13951,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -15795,6 +15796,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -15973,6 +15975,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -19428,6 +19431,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -20045,6 +20049,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -25752,6 +25757,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -25995,6 +26001,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -26160,6 +26167,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -26379,6 +26387,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -41550,6 +41559,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -41604,6 +41614,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -41677,6 +41688,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -41730,6 +41742,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -41784,6 +41797,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
@@ -41853,6 +41867,7 @@ paths:
         schema:
           type: string
           enum:
+          - 'all'
           - 'on'
           - bc
           - ab
